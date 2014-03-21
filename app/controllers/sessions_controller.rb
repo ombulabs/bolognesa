@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
 
-  require 'pry'
-
   def create
     if session[:id] && current_user
       current_user.create_provider(auth_hash)

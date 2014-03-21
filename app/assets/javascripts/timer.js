@@ -19,7 +19,7 @@ function addPercentage(){
 		playDing();
 		$.ajax("/pomodoris/set_finished");
 	} else {
-		var percent_to_add = 100 / (25*60);
+		var percent_to_add = 100 / (25*60) * 100;
 		setPercentage(getPercentage() + percent_to_add);
 	}
 }

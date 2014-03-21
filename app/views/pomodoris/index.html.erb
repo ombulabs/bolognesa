@@ -1,3 +1,6 @@
-<% @pomodoris.each do |pomodoro| %>
-
+<% if @pomodoris %>
+Showing last 5 pomodori: <br />
+  <% @pomodoris.each do |pomodoro| %>
+    Pomodoro #<%= pomodoro.id %> - Finished on <%= pomodoro.finished_at.strftime("%B %d at %I:%M %p") %> <br />
+  <% end %>
 <% end %>
