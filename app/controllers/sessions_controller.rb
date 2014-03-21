@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       auth = Authorization.find_or_create_by_provider(auth_hash)
       session[:id] = auth.user_id
     end
-      redirect_to '/', :notice => "Signed in!"
+    redirect_to '/', :notice => "Signed in!"
   end
 
   def destroy
