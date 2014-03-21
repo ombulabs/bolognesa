@@ -1,0 +1,17 @@
+/* === HEADER */
+/* ========================== */
+
+// Imports:
+@import "compass/css3";
+
+.dialog {
+	width: 50%;
+	margin: ($gutter*3) auto $gutter;
+	background: $light_grey;
+	padding: $gutter;
+	@include border-radius($global_border_radius);
+
+	&.error {
+		background: $light_red;
+	}
+}

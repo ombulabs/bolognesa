@@ -1,12 +1,20 @@
-<h2>Bolognesa</h2>
 
 <% if current_user %>
 
-  Welcome <%= current_user.name %>!
+  <p>Welcome <%= current_user.name %>!</p>
+
+	<button class="button huge primary start-button">Start</button>
+
+	<progress value="22" max="100" class="timer-progress">22%</progress>
+	<div class="visible-progress-value">23:06</div>
 
 <% else %>
-
-  <%= image_tag('http://tritarget.org/devin/icons/github_button.png') %>
-  <%= button_to "Sign in with Github", '/auth/github', :method => "get" %>
-
+			<section class="dialog login">
+				<header>
+					<h1>Login</h1>
+				</header>
+				<div class="dialog-content">
+  				<%= link_to '<i class="fa fa-github-alt"></i> Sign in with Github'.html_safe, '/auth/github', :class =>"button inverse" %>
+				</div>
+			</section>
 <% end %>

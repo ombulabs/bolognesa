@@ -1,0 +1,21 @@
+/* === HEADER */
+/* ========================== */
+
+// Imports:
+@import "compass/css3";
+
+.main-header {
+	text-align: center;
+	background: #000;
+	color: #fff;
+	padding: $gutter 0;
+
+	h1 {
+		margin-top: 0;
+		margin-bottom: 0;
+		@include font-lato-light;
+		text-transform: uppercase;
+		-webkit-font-smoothing: antialiased;
+		letter-spacing: .3em;
+	}
+}

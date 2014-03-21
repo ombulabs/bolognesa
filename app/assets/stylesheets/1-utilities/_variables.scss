@@ -1,0 +1,45 @@
+// === VARIABLES 
+// ========================== 
+
+// Imports:
+@import "compass/css3";
+
+// Colors:
+$light_grey: #eee;
+$light_red: #fee;
+$sky_blue: #00B3FF;
+
+$green: #00FF8C;
+$orange: #FFCC00;
+$magenta: #F70A7C;
+
+// Button colors:
+$button_text_color: #444;
+$button_background_color_default: $light_grey;
+$button_background_color_default_hover: lighten($button_background_color_default, 2%);
+$button_background_color_default_active: darken($button_background_color_default, 5%);
+$button_background_color_primary: $magenta;
+$button_background_color_primary_hover: lighten($button_background_color_primary, 7%);
+$button_background_color_primary_active: darken($button_background_color_primary, 10%);
+$button_background_color_inverse: #fff;
+$button_background_color_inverse_hover: lighten($light_grey, 4%);
+$button_background_color_inverse_active: darken($light_grey, 5%);
+
+// Measurements:
+$gutter: 30px;
+$hover_transition_time: 150ms;
+$global_border_radius: 3px;
+
+// Typography:
+$font-lato: "Lato", "Helvetica", Arial, sans-serif;
+$font-maven: "Maven", "Lato", "Helvetica", Arial, sans-serif;
+$base-font-size: 17px;
+$base-line-height: 1.4;
+
+// Breakpoints:
+$breakpoint_0: 500px;
+$breakpoint_1: 768px;
+$breakpoint_2: 992px;
+$breakpoint_3: 1200px;
+
+// Images:
