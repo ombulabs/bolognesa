@@ -11,5 +11,6 @@ Bolognesa::Application.routes.draw do
   match "/signout" => "sessions#destroy", :as => :signout
 
   match "/pomodoris/create" => "pomodoris#create"
+  match "/pomodoris/set_finished" => "pomodoris#set_finished"
 
 end

@@ -20,4 +20,10 @@ class PomodorisController < ApplicationController
     end
   end
 
+  def set_finished
+    if @pomodori = current_user.pomodoris.last.set_finished
+      redirect_to :root
+    end
+  end
+
 end

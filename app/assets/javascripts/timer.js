@@ -17,8 +17,9 @@ function addPercentage(){
 	if(getPercentage() >= 100){
 		stop();
 		playDing();
+		$.ajax("/pomodoris/set_finished");
 	} else {
-		var percent_to_add = 100 / (25*60) * 100;
+		var percent_to_add = 100 / (25*60);
 		setPercentage(getPercentage() + percent_to_add);
 	}
 }
