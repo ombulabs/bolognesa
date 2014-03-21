@@ -4,3 +4,10 @@
 // Imports:
 @import "compass/css3";
 
+.notice {
+	background: $light_yellow;
+	padding: ($gutter/2) $gutter;
+	width: 50%;
+	margin: 0 auto;
+	@include border-radius(0 0 $global_border_radius $global_border_radius);
+}
