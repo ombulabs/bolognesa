@@ -19,11 +19,13 @@ function addPercentage(){
 		playDing();
 		$.ajax("/pomodoris/set_finished");
 	} else {
-		var percent_to_add = 100 / (25*60) * 100;
+		// var percent_to_add = 100 / (25*60); // el posta
+		var percent_to_add = 100 / (25*60) * 100; // provisorio para testing
 		setPercentage(getPercentage() + percent_to_add);
 	}
 }
 function start(){
+	stop();
 	setPercentage(0);
 	interval_id = setInterval(addPercentage,1000);
   $.ajax("/pomodoris/create");
