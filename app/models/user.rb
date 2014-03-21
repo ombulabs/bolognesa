@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   has_many :authorizations
-  has_many :pomodori
 
   def create_provider(auth_hash)
     unless authorizations.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
