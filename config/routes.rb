@@ -10,4 +10,6 @@ Bolognesa::Application.routes.draw do
   match '/auth/failure', :to => 'sessions#failure'
   match "/signout" => "sessions#destroy", :as => :signout
 
+  match "/pomodoris/create" => "pomodoris#create"
+
 end
