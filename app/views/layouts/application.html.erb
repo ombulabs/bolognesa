@@ -10,7 +10,11 @@
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 	  <%= stylesheet_link_tag    "application" %>
-	  <%= javascript_include_tag "application" %>
+	  <%= javascript_include_tag "vendor/jquery-1.11.0.min" %>
+	  <%= javascript_include_tag "jquery_ujs" %>
+	  <%= javascript_include_tag "notices" %>
+
+
 	  <%= csrf_meta_tags %>
 	</head>
 	<body class="application <% if current_user %>logged-in<% else %>logged-in-not<% end %>">
