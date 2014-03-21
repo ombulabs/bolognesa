@@ -22,6 +22,9 @@ end
 
 gem 'jquery-rails'
 
+# Using Omniauth-Github for Github login
+gem 'omniauth-github'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
