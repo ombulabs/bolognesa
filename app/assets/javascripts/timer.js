@@ -6,7 +6,7 @@ var interval_id;
 function setPercentage(percent){
 	var _percent = Number(percent);
 	$('#timer-progress').attr("value", percent);
-	$('.visible-progress-value').html(percent);
+	$('.visible-progress-value').html(Math.floor(percent*100)/100);
 }
 
 function getPercentage(){
@@ -18,12 +18,12 @@ function addPercentage(){
 		stop();
 		playDing();
 	} else {
-		var percent_to_add = 1;
+		var percent_to_add = 100 / (25*60);
 		setPercentage(getPercentage() + percent_to_add);
 	}
 }
 function start(){
-	interval_id = setInterval(addPercentage,100);
+	interval_id = setInterval(addPercentage,1000);
   $.ajax("/pomodoris/create");
 }
 function stop(){
