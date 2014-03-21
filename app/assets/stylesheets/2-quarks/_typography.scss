@@ -1,0 +1,60 @@
+/* === TYPOGRAPHY */
+/* ========================== */
+
+// Imports:
+@import "compass/css3";
+
+// Typography mixins:
+@mixin font-lato-light {
+	font-family: $font-lato;
+	font-weight: 300;
+}
+@mixin font-lato-normal {
+	font-family: $font-lato;
+	font-weight: 400;
+}
+@mixin font-lato-bold {
+	font-family: $font-lato;
+	font-weight: 700;
+}
+
+@mixin font-maven {
+	font-family: $font-maven;
+	font-weight: 400;
+}
+
+// Styles:
+body {
+	@include font-lato-light;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+	letter-spacing: 0.05882em;
+}
+h1, h2, h3, h4, h5, h6 {
+	@include font-lato-bold;
+	margin-top: 1em;
+	margin-bottom: .7em;
+	&:first-child {
+		margin-top: 0;
+	}
+}
+h1 {
+	font-size: 2em;
+}
+h2 {
+	font-size: 1.8em;
+}
+h3 {
+	font-size: 1.5em;
+}
+
+p {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	&:first-child {
+		margin-top: 0;
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
+}

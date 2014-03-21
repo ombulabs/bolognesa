@@ -1,0 +1,127 @@
+/* === FOOTER */
+/* ========================== */
+
+// Imports:
+@import "compass/css3";
+
+@import "compass/css3";
+
+// BUTTONS
+
+// Sizes:
+// - small
+// - medium (default)
+// - large
+// - huge
+
+// Styles:
+// - normal (default)
+// - primary
+// - inverse
+// - disabled
+
+@mixin button-default(){
+
+  color: $button_text_color;
+  background-color: $button_background_color_default;
+  display: inline-block;
+  padding: 0.7em 1.2em;
+  margin: 0 .2em;
+
+  border: none;
+  @include border-radius($global_border_radius);
+  
+  @include font-lato-normal;
+  font-size: 1em;
+  text-decoration: none;
+  line-height: 1em;
+  cursor: pointer;
+
+  @include transition($hover_transition_time);
+  @include transition-property(background, color);
+
+	&:first-child {
+		margin-left: 0;
+	}
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+
+.button {
+  @include button-default;
+
+  &:hover {
+    background: $button_background_color_default_hover;
+  }
+  &:active, &:focus {
+    @include transition(0ms);
+    background: $button_background_color_default_active;
+    color: darken($button_text_color, 7%);
+    outline: none;
+  }
+
+  // Sizes:
+  &.small {
+    font-size: 0.8em;
+  }
+  &.medium {
+    // default
+    font-size: 1em;
+  }
+  &.large {
+    font-size: 1.2em;
+  }
+  &.huge {
+    font-size: 1.6875em;
+    letter-spacing: 1px;
+  }
+
+  // Styles:
+  &.normal {
+    // default
+  }
+  &.primary, &.call-to-action {
+    background-color: $button_background_color_primary;
+    color: #fff;
+    @include font-lato-bold;
+    &:hover {
+      background: $button_background_color_primary_hover;
+    }
+    &:active, &:focus {
+      background: $button_background_color_primary_active;
+    }
+  }
+  &.inverse {
+    background: $button_background_color_inverse;
+    &:hover {
+      background: $button_background_color_inverse_hover;
+    }
+    &:active, &:focus {
+      background: $button_background_color_inverse_active;
+    }
+  }
+  &.inverse.primary, &.inverse.call-to-action {
+    color: $orange;
+    &:active {
+      color: darken($orange, 12%);
+    }
+  }
+  &[disabled], &.disabled{
+    cursor: not-allowed;
+    pointer-events: none;
+    @include opacity(0.7);
+    filter: alpha(opacity=70);
+  }
+
+}
+
+
+.button.start-button {
+	margin: $gutter auto;
+	margin-top: $gutter*6;
+	display: block;
+	text-transform: uppercase;
+	@include font-lato-normal;
+}

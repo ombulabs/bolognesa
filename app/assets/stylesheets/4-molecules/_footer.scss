@@ -1,0 +1,25 @@
+/* === HEADER */
+/* ========================== */
+
+// Imports:
+@import "compass/css3";
+
+.main-footer {
+	@include font-lato-normal;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	z-index: 102;
+	font-size: .6em;
+
+	a {
+		text-decoration: none;
+		display: block;
+		margin: 0;
+		padding: 5px;
+		&:hover {
+			background: #000;
+			color: #fff;
+		}
+	}
+}

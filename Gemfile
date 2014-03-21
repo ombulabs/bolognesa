@@ -19,6 +19,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'rb-readline'
+
 # Using Omniauth-Github for Github login
 gem 'omniauth-github'
 

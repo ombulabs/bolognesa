@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Bolognesa</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+	  <title>Bolognesa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 <%= yield %>
 
-</body>
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic|Maven+Pro' rel='stylesheet' type='text/css'>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+	  <%= stylesheet_link_tag    "application" %>
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<header class="main-header logged-in-not">
+			<h1>Bolognesa</h1>
+		</header>
+
+	<% if flash[:notice] %>
+	  <div id="notice"><%= flash[:notice] %></div>
+	<% end %>
+
+		<section id="main">
+			<%= yield %>
+		</section>
+
+		<footer class="main-footer">
+			<a href="http://www.ombulabs.com">An OmbuLabs Project</a>
+		</footer>
+	</body>
 </html>

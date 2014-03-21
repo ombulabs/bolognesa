@@ -1,0 +1,19 @@
+/* === BASIC */
+/* ========================== */
+
+// Imports:
+@import "compass/css3";
+
+/* Eric Meyer's reset */
+@import "compass/reset";
+/* End E.M. reset */
+
+* {
+	margin: 0;
+	padding: 0;
+	@include box-sizing(border-box);
+}
+body {
+	color: #000;
+	background: #fff;
+}
