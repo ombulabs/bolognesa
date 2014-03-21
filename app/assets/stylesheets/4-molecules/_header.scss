@@ -5,6 +5,7 @@
 @import "compass/css3";
 
 .main-header {
+	position: relative;
 	text-align: center;
 	background: #000;
 	color: #fff;
@@ -17,5 +18,21 @@
 		text-transform: uppercase;
 		-webkit-font-smoothing: antialiased;
 		letter-spacing: .3em;
+	}
+}
+
+.logged-in {
+	.main-header {
+		h1 {
+			text-align: left;
+			@include font-lato-normal;
+			font-size: 1.2em;
+			padding-left: $gutter;
+		}
+	}
+}
+
+.logged-in-not {
+	.main-header {
 	}
 }

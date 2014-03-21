@@ -1,0 +1,16 @@
+/* === HEADER */
+/* ========================== */
+
+// Imports:
+@import "compass/css3";
+
+.login-bar {
+	position: absolute;
+	top: $gutter;
+	right: $gutter;
+	font-size: .8em;
+
+	.logout-button {
+		margin-left: .5em;
+	}
+}
