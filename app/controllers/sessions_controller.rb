@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  
+
   def create
     if session[:id]
       current_user.create_provider(auth_hash)

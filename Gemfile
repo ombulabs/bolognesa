@@ -7,16 +7,13 @@ gem 'rails', '3.1.12'
 
 gem 'sqlite3'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'
   gem 'coffee-rails', '~> 3.1.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
-
+  gem 'compass-rails', '>= 1.1.6'
+  gem "compass", "~> 0.12.alpha.0"
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -36,6 +33,8 @@ gem 'omniauth-github'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'pry'
 
 group :test do
   # Pretty printed test output

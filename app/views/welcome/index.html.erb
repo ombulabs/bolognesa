@@ -1,0 +1,12 @@
+<h2>Bolognesa</h2>
+
+<% if current_user %>
+
+  Welcome <%= current_user.name %>!
+
+<% else %>
+
+  <%= image_tag('http://tritarget.org/devin/icons/github_button.png') %>
+  <%= button_to "Sign in with Github", '/auth/github', :method => "get" %>
+
+<% end %>
