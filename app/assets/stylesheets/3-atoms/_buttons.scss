@@ -53,7 +53,7 @@
   &:hover {
     background: $button_background_color_default_hover;
   }
-  &:active, &:focus {
+  &:active {
     @include transition(0ms);
     background: $button_background_color_default_active;
     color: darken($button_text_color, 7%);
