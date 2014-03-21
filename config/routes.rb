@@ -1,7 +1,5 @@
 Bolognesa::Application.routes.draw do
 
-  resources :pomodori
-
   root to: 'welcome#index'
 
   match "/auth/:provider/callback" => "sessions#create"

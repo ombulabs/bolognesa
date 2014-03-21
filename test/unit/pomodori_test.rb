@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PomodoroTest < ActiveSupport::TestCase
+class PomodoriTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

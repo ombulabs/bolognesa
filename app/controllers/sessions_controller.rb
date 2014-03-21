@@ -1,13 +1,15 @@
 class SessionsController < ApplicationController
 
+  require 'pry'
+
   def create
-    if session[:id]
+    if session[:id] && current_user
       current_user.create_provider(auth_hash)
     else
       auth = Authorization.find_or_create_by_provider(auth_hash)
       session[:id] = auth.user_id
     end
-    redirect_to '/', :notice => "Signed in!"
+      redirect_to '/', :notice => "Signed in!"
   end
 
   def destroy

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PomodoriControllerTest < ActionController::TestCase
+class PomodorisControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
