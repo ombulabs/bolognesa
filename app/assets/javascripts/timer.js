@@ -18,11 +18,12 @@ function addPercentage(){
 		stop();
 		playDing();
 	} else {
-		var percent_to_add = 100 / (25*60);
+		var percent_to_add = 100 / (25*60) * 100;
 		setPercentage(getPercentage() + percent_to_add);
 	}
 }
 function start(){
+	setPercentage(0);
 	interval_id = setInterval(addPercentage,1000);
   $.ajax("/pomodoris/create");
 }
@@ -30,6 +31,8 @@ function stop(){
 	clearInterval(interval_id);
 }
 function playDing(){
+	document.getElementById('audio-ding').currentTime = 0;
+	document.getElementById('audio-ding').load();
 	document.getElementById('audio-ding').play();
 }
 
