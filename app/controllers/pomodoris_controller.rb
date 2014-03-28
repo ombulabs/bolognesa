@@ -34,7 +34,7 @@ class PomodorisController < ApplicationController
   end
 
   def create
-    if @pomodori = Pomodori.new(user_id: @current_user.id).save
+    if Pomodori.new(user_id: current_user.id).save
       redirect_to :root
     end
   end
