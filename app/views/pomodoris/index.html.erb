@@ -4,9 +4,9 @@
   	<ul>
 		<% @pomodoris.each do |pomodoro| %>
       <% if pomodoro.finished_at %>
-  			<li><strong>Pomodoro #<%= pomodoro.id %></strong> - Finished on <%= pomodoro.finished_at.strftime("%B %d at %I:%M %p") %> - <%= link_to '<i class="fa fa-edit"></i> Edit tags'.html_safe, edit_user_pomodori_path(pomodoro), :remote => true, :class => "edit_tags button small" %> </li>
+        <li><strong>Pomodoro #<%= pomodoro.id %></strong> - <%= pomodoro.finished_at.strftime("%I:%M %p %m/%d/%y") %> - <strong>Tags:</strong> <%= pomodoro.tags.map(&:name).join ', ' %> <%= link_to '<i class="fa fa-edit"></i> Edit tags'.html_safe, edit_user_pomodori_path(current_user.id, pomodoro.id), :remote => true, :class => "edit_tags button small" %> </li>
       <% end %>
-		<% end %>
+    <% end %>
   	</ul>
   </section>
 <% end %>
