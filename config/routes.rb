@@ -6,6 +6,8 @@ Bolognesa::Application.routes.draw do
     resources :pomodoris
   end
 
+  resources :pomodoris
+
   match "/auth/:provider/callback" => "sessions#create"
   match '/auth/failure', :to => 'sessions#failure'
   match "/signout" => "sessions#destroy", :as => :signout

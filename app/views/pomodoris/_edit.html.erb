@@ -1,1 +1,10 @@
 Edit your tags:
+
+<%= form_for @pomodori do |p| %>
+  <%= p.fields_for :tag do |t| %>
+    <%= t.label :name %>
+    <%= t.text_field :name %>
+  <% end %>
+
+  <%= p.submit %>
+<% end %>
