@@ -5,9 +5,14 @@ var current_interval_id;
 
 var current_start_date;
 var current_finish_date;
-var current_remaining_time = new Date();
+var current_remaining_time;
+
+var time_lapse_work = 25*60*1000;
+var time_lapse_break = 5*60*1000;
+var time_lapse_break_long = 15*60*1000;
 
 var show_remaining_time_as_percentage = false;
+var testing_fast_mode = true;
 
 // Sets the percentage
 function setPercentage(percent, remaining_time){
@@ -16,7 +21,7 @@ function setPercentage(percent, remaining_time){
 	if(show_remaining_time_as_percentage){
 		$('.visible-progress-value').html(Math.floor(percent) + "%");
 	} else {
-		var remaining_time_string = remaining_time.getMinutes() + ":" + remaining_time.getSeconds();
+		var remaining_time_string = remaining_time.getMinutes() + ":" + (remaining_time.getSeconds() < 10 ? "0"+remaining_time.getSeconds() : remaining_time.getSeconds());
 		$('.visible-progress-value').html(remaining_time_string);
 	}
 }
@@ -24,25 +29,24 @@ function setPercentage(percent, remaining_time){
 // Gets the percentage
 // Returns number
 function getPercentage(){
-	var percent_value = Number( $('#timer-progress').attr("value") );
+	var percent_value = 100 - ( current_remaining_time/time_lapse_work*100 );
 	return percent_value;
 }
 
 // It checks if percentage reached 100, if not
 // it adds percentage
-function addPercentage(){
+function incrementProgress(){
 	if(getPercentage() >= 100){
+		current_remaining_time.setTime(0);
+		setPercentage(100, current_remaining_time);
 		finishPomodoro();
 	} else {
-		var _percent;
-
-		var percent_to_add = 100 / (25*60); // el posta
-		// var percent_to_add = 100 / (25*60) * 100; // provisorio para testing
-
-		_percent = getPercentage() + percent_to_add;
-		current_remaining_time.setTime(current_finish_date.getTime() - 1000);
-		console.log("current_remaining_time: "+current_remaining_time);
-		setPercentage(_percent, current_remaining_time);
+		if(testing_fast_mode){
+			current_remaining_time.setTime(current_remaining_time.getTime() - 1000*100);
+		} else {
+			current_remaining_time.setTime(current_remaining_time.getTime() - 1000);
+		}
+		setPercentage(getPercentage(), current_remaining_time);
 	}
 }
 
@@ -59,20 +63,13 @@ function start(){
 
   current_start_date = new Date();
   current_finish_date = new Date();
-  current_finish_date.setTime(current_start_date.getTime()+(25*60*1000));
+  current_finish_date.setTime(current_start_date.getTime()+time_lapse_work);
+  current_remaining_time = new Date();
+  current_remaining_time.setTime(time_lapse_work);
 
-	setPercentage(0, current_finish_date);
-	current_interval_id = setInterval(addPercentage,1000);
+	setPercentage(0, current_remaining_time);
+	current_interval_id = setInterval(incrementProgress, 1000);
   $.ajax("/pomodoris/create");
-}
-
-// Time remaining until the end of the pomodoro
-// Returns Date object
-function getRemainingTime(){
-	var now = new Date();
-	var difference = new Date();
-	difference.setTime(now.getTime() - current_finish_date.getTime());
-	return difference;
 }
 
 // Stops timer
