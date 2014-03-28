@@ -11,6 +11,10 @@ class PomodorisController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
   def create
     # If pomodori was not created within last 5 minutes, create new Pomodori
     if current_user.can_pomodori?
@@ -25,5 +29,6 @@ class PomodorisController < ApplicationController
       redirect_to :root
     end
   end
+
 
 end

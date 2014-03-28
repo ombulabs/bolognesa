@@ -1,6 +1,10 @@
 <% if @pomodoris %>
 Showing last 5 pomodori: <br />
   <% @pomodoris.each do |pomodoro| %>
-    Pomodoro #<%= pomodoro.id %> - Finished on <%= pomodoro.finished_at.strftime("%B %d at %I:%M %p") %> <br />
+    Pomodoro #<%= pomodoro.id %> - Finished on <%= pomodoro.finished_at.strftime("%B %d at %I:%M %p") %> - <%= link_to "Edit tags", "#edit_tags", :class => "edit_tags" %> <br />
   <% end %>
 <% end %>
+
+<div id="edit_tags">
+  <% render "edit" %>
+</div>

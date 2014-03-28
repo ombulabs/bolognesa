@@ -1,5 +1,12 @@
 <% if current_user %>
 
+  <% if @pomodoris %>
+		Showing last 5 pomodori: <br />
+		<% @pomodoris.each do |pomodoro| %>
+			Pomodoro #<%= pomodoro.id %> - Finished on <%= pomodoro.finished_at.strftime("%B %d at %I:%M %p") %> - <%= link_to "Edit tags", "#edit_tags", :class => "edit_tags" %> <br />
+		<% end %>
+	<% end %>
+
 	<button class="button huge primary start-button">Start</button>
 
 	<progress value="0" max="100" class="timer-progress" id="timer-progress">0%</progress>
