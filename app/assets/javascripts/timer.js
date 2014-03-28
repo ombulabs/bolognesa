@@ -1,18 +1,25 @@
 // Bolognesa timer
 // ***************
 
-var current_interval_id;
 
+// GLOBAL VARIABLES (should be properties of some object)
+var current_interval_id;
 var current_start_date;
 var current_finish_date;
-var current_remaining_time;
-
-var time_lapse_work = 25*60*1000;
-var time_lapse_break = 5*60*1000;
-var time_lapse_break_long = 15*60*1000;
-
+var current_remaining_time = new Date();
+var current_is_break = false;
 var show_remaining_time_as_percentage = false;
 var testing_fast_mode = true;
+var current_total_time_lapse = TIME_LAPSE_WORK;
+
+// CONSTANTS
+var TIME_LAPSE_WORK = 25*60*1000;
+var TIME_LAPSE_BREAK = 5*60*1000;
+var TIME_LAPSE_BREAK_LONG = 15*60*1000;
+
+
+
+// TIMER METHODS
 
 // Sets the percentage
 function setPercentage(percent, remaining_time){
@@ -29,7 +36,7 @@ function setPercentage(percent, remaining_time){
 // Gets the percentage
 // Returns number
 function getPercentage(){
-	var percent_value = 100 - ( current_remaining_time/time_lapse_work*100 );
+	var percent_value = 100 - ( current_remaining_time/current_total_time_lapse*100 );
 	return percent_value;
 }
 
@@ -39,7 +46,11 @@ function incrementProgress(){
 	if(getPercentage() >= 100){
 		current_remaining_time.setTime(0);
 		setPercentage(100, current_remaining_time);
-		finishPomodoro();
+		if(current_is_break) {
+			finishBreak();
+		} else {
+			finishPomodoro();
+		}
 	} else {
 		if(testing_fast_mode){
 			current_remaining_time.setTime(current_remaining_time.getTime() - 1000*100);
@@ -55,6 +66,7 @@ function finishPomodoro(){
 	stop();
 	playDing();
 	$.ajax("/pomodoris/set_finished");
+	current_is_break = true;
 }
 
 // Starts counting working time
@@ -63,9 +75,9 @@ function start(){
 
   current_start_date = new Date();
   current_finish_date = new Date();
-  current_finish_date.setTime(current_start_date.getTime()+time_lapse_work);
+  current_finish_date.setTime(current_start_date.getTime()+current_total_time_lapse);
   current_remaining_time = new Date();
-  current_remaining_time.setTime(time_lapse_work);
+  current_remaining_time.setTime(current_total_time_lapse);
 
 	setPercentage(0, current_remaining_time);
 	current_interval_id = setInterval(incrementProgress, 1000);
@@ -75,6 +87,34 @@ function start(){
 // Stops timer
 function stop(){
 	clearInterval(current_interval_id);
+	setPercentage(0, current_remaining_time);
+}
+
+function startPomodoro(){
+	current_is_break = false;
+	$('body').removeClass("break");
+	current_total_time_lapse = TIME_LAPSE_WORK;
+	start();
+}
+function startBreak(){
+	current_is_break = true;
+	$('body').addClass("break");
+	current_total_time_lapse = TIME_LAPSE_BREAK;
+	start();
+}
+function finishBreak(){
+	stop();
+	playDing();
+	current_total_time_lapse = TIME_LAPSE_WORK;
+	$('body').removeClass("break");
+	current_is_break = false;
+}
+function startToggle(){
+	if(current_is_break) {
+		startBreak();
+	} else {
+		startPomodoro();
+	}
 }
 
 // Plays ding sound, using HTML5 <audio> tag

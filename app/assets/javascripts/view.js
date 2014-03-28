@@ -7,7 +7,7 @@ var view = {
 		$(document).ready(function(){
 				$('.start-button').click(function(e){
 					e.target.blur();
-					start();
+					startToggle();
 				});
 
 		});

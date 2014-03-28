@@ -47,6 +47,20 @@ progress::-webkit-progress-value {
 progress[aria-valuenow]:before  {
     background: $sky_blue;
 }
+body.break {
+	progress {
+	    color: $green;
+	}
+	progress::-moz-progress-bar { 
+	    background: $green;	
+	}
+	progress::-webkit-progress-value {
+	    background: $green;
+	}
+	progress[aria-valuenow]:before  {
+	    background: $green;
+	}
+}
 
 // Indeterminate value
 progress:not([value])::-moz-progress-bar { 
