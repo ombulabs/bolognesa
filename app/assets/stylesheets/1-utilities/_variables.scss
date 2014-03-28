@@ -33,6 +33,7 @@ $button_background_color_dark_active: lighten(#000, 30%);
 $gutter: 30px;
 $hover_transition_time: 150ms;
 $global_border_radius: 3px;
+$progress_bar_height: $gutter*5;
 
 // Typography:
 $font-lato: "Lato", "Helvetica", Arial, sans-serif;

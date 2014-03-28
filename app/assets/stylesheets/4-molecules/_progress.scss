@@ -4,27 +4,16 @@
 // Imports:
 @import "compass/css3";
 
-// Reset native design:
 
-progress,          /* All HTML5 progress enabled browsers */
-progress[role]     /* polyfill */
-{
-
-	/* Turns off styling - not usually needed, but good to know. */
+// Progress bar
+progress, progress[role] {
 	appearance: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
-
-	/* gets rid of default border in Firefox and Opera. */ 
 	border: none;
-
-	/* Needs to be in here for Safari polyfill so background images work as expected. */
 	background-size: auto;
-	
-	/* Dimensions */
 	width: 100%;
-	height: 20%;
-
+	height: $progress_bar_height;
 	display: block;
 	position: fixed;
 	bottom: 0;
@@ -32,86 +21,49 @@ progress[role]     /* polyfill */
 	right: 0;
 	z-index: 100;
 }
-
-/* Polyfill */
 progress[role]:after {
-	background-image: none; /* removes default background from polyfill */
+	background-image: none;
 }
-
-/* Ensure fallback text doesn't appear in polyfill */
 progress[role] strong {
 	display: none;
 }
-
-
-
-
-
-// Progress background:
-progress,                          /* Firefox  */ 
-progress[role][aria-valuenow] {    /* Polyfill */
-   background: $light_grey !important; /* !important is needed by the polyfill */
+progress, progress[role][aria-valuenow] { 
+   background: $light_grey !important;
 }
-
-/* Chrome */
 progress::-webkit-progress-bar {
     background: $light_grey;
 }
 
-
-
-
-
 // Progress value
-
-/* IE10 */
 progress {
     color: $sky_blue;
 }
-
-/* Firefox */
 progress::-moz-progress-bar { 
     background: $sky_blue;	
 }
-
-/* Chrome */
 progress::-webkit-progress-value {
     background: $sky_blue;
 }
-
-/* Polyfill */
 progress[aria-valuenow]:before  {
     background: $sky_blue;
 }
 
-
-
 // Indeterminate value
-
-/* Firefox */
 progress:not([value])::-moz-progress-bar { 
   background-image:  url(../images/indeter.gif);	
 }
-
-/* Chrome */
 progress:not([value])::-webkit-progress-bar {
   background-image:  url(../images/indeter.gif);	
 }
-
-/* Polyfill - IE */
 progress[role]{
 	background-image: url(../images/indeter.gif) !important;
 }
-
-/* Polyfill - Safari */
 progress:not([value])  {
 	background-image: url(../images/indeter.gif) !important;
 	background-size: auto;  /* Needs to be in here for Safari */
 }
 
-
-
-
+// Visible progress value (not the <progress> tag)
 .visible-progress-value {
 	color: #000;
 	display: block;
