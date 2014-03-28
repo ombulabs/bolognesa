@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140321185700) do
+ActiveRecord::Schema.define(:version => 20140328133353) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -21,11 +21,24 @@ ActiveRecord::Schema.define(:version => 20140321185700) do
     t.integer  "user_id"
   end
 
+  create_table "pomodori_tags", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "pomodori_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pomodoris", :force => true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "finished_at"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

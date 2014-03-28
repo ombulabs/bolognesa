@@ -35,13 +35,16 @@ class PomodorisController < ApplicationController
 
   def create
     if Pomodori.new(user_id: current_user.id).save
-      redirect_to :root
+      redirect_to root_path
     end
   end
 
   def set_finished
+    @pomodoris = current_user.pomodoris
     if @pomodori = current_user.pomodoris.last.set_finished
-      redirect_to :root
+      respond_to do |format|
+        format.js # { redirect_to root_path }
+      end
     end
   end
 
