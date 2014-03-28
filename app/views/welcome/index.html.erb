@@ -3,10 +3,14 @@
 	<button class="button huge primary start-button">Start</button>
 
   <% if @pomodoris %>
-		Showing last 5 pomodori: <br />
-		<% @pomodoris.each do |pomodoro| %>
-			Pomodoro #<%= pomodoro.id %> - Finished on <%= pomodoro.finished_at.strftime("%B %d at %I:%M %p") %> - <%= link_to "Edit tags", "#edit_tags", :class => "edit_tags" %> <br />
-		<% end %>
+	  <section class="pomodoro-list-container">
+			<h1>Today:</h1>
+	  	<ul>
+			<% @pomodoris.each do |pomodoro| %>
+				<li><strong>Pomodoro #<%= pomodoro.id %></strong> - Finished on <%= pomodoro.finished_at.strftime("%B %d at %I:%M %p") %> - <%= link_to '<i class="fa fa-edit"></i> Edit tags'.html_safe, "#edit_tags", :class => "edit_tags button small" %> </li>
+			<% end %>
+	  	</ul>
+	  </section>
 	<% end %>
 
 	<progress value="0" max="100" class="timer-progress" id="timer-progress">0%</progress>
