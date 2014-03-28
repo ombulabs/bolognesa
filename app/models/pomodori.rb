@@ -9,7 +9,7 @@ class Pomodori < ActiveRecord::Base
   end
 
   def self.today
-    self.where(:created_at => Date.today)
+    self.where(["created_at >= ? AND created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day])
   end
 
 end

@@ -65,7 +65,10 @@ function incrementProgress(){
 function finishPomodoro(){
 	stop();
 	playDing();
-	$.ajax("/pomodoris/set_finished");
+	$.ajax({
+		type: 'POST',
+		url: "/pomodoris/set_finished"
+	});
 	current_is_break = true;
 	view.showStartButton();
 }
@@ -82,7 +85,10 @@ function start(){
 
 	setPercentage(0, current_remaining_time);
 	current_interval_id = setInterval(incrementProgress, 1000);
-  $.ajax("/pomodoris/create");
+  $.ajax({
+		type: 'POST',
+		url: "/pomodoris/create"
+	});
 }
 
 // Stops timer
