@@ -3,13 +3,12 @@
 		<h1>All pomodoris:</h1>
   	<ul>
 		<% @pomodoris.each do |pomodoro| %>
-			<li><strong>Pomodoro #<%= pomodoro.id %></strong> - Finished on <%= pomodoro.finished_at.strftime("%B %d at %I:%M %p") %> - <%= link_to '<i class="fa fa-edit"></i> Edit tags'.html_safe, "#edit_tags", :class => "edit_tags button small" %> </li>
+      <% if pomodoro.finished_at %>
+  			<li><strong>Pomodoro #<%= pomodoro.id %></strong> - Finished on <%= pomodoro.finished_at.strftime("%B %d at %I:%M %p") %> - <%= link_to '<i class="fa fa-edit"></i> Edit tags'.html_safe, edit_user_pomodori_path(pomodoro), :remote => true, :class => "edit_tags button small" %> </li>
+      <% end %>
 		<% end %>
   	</ul>
   </section>
 <% end %>
 
-<div id="edit_tags">
-  <% render "edit" %>
-</div>
-
+<div id="modal"></div>
