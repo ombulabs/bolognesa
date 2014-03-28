@@ -6,20 +6,21 @@
 
 
 .pomodoro-list-container {
-	background: lighten($light_grey, 6%);
 	width: 50%;
 	margin: 0 auto;
-	padding: ($gutter/2);
 	font-size: .8em;
 	h1 {
-		background: $light_grey;
-		padding: ($gutter/2);
-		margin: (-$gutter/2) (-$gutter/2) 1em (-$gutter/2);
+		font-size: 1.5em;
+		text-transform: uppercase;
+		margin: .5em 0;
 	}
 	ul {
+		margin: .5em 0;
+		padding: 1em 0;
+		border-top: 3px solid $light_grey;
+		border-bottom: 3px solid $light_grey;
 		li {
-			margin: .5em 0 .5em 1em;
-			list-style-type: square;
+			margin: .5em 0;
 		}
 	}
 }

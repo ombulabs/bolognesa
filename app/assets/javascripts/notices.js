@@ -11,7 +11,7 @@ function drawFlashMessage(message_text, message_type){
 
 function showFlashMessages(){
   if($(".notice").length > 0){
-    $(".notice").hide().delay(1000).slideDown(1000).delay(9000).slideUp(1000);
+    $(".notice").hide().delay(500).slideDown(500).delay(6000).slideUp(500);
   }
 }
 
