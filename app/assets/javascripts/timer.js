@@ -67,6 +67,7 @@ function finishPomodoro(){
 	playDing();
 	$.ajax("/pomodoris/set_finished");
 	current_is_break = true;
+	view.showStartButton();
 }
 
 // Starts counting working time
@@ -92,12 +93,14 @@ function stop(){
 
 function startPomodoro(){
 	current_is_break = false;
+	view.showWorkingButton();
 	$('body').removeClass("break");
 	current_total_time_lapse = TIME_LAPSE_WORK;
 	start();
 }
 function startBreak(){
 	current_is_break = true;
+	view.showRelaxingButton();
 	$('body').addClass("break");
 	current_total_time_lapse = TIME_LAPSE_BREAK;
 	start();
@@ -107,6 +110,7 @@ function finishBreak(){
 	playDing();
 	current_total_time_lapse = TIME_LAPSE_WORK;
 	$('body').removeClass("break");
+	view.showStartButton();
 	current_is_break = false;
 }
 function startToggle(){
