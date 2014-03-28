@@ -1,0 +1,29 @@
+/* === NAVIGATION */
+/* ========================== */
+
+// Imports:
+@import "compass/css3";
+
+.navigation {
+	text-transform: uppercase;
+	position: absolute;
+	top: $gutter;
+	right: $gutter;
+	text-align: right;
+	font-size: .8em;
+	ul {
+		li {
+			display: inline-block;
+			a {
+				display: block;
+				padding: .2em .4em;
+				text-decoration: none;
+			  @include transition($hover_transition_time);
+			  @include transition-property(background, color);
+				&:hover {
+					background-color: $button_background_color_inverse_hover;
+				}
+			}
+		}
+	}
+}

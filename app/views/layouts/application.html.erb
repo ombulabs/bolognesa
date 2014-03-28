@@ -34,10 +34,16 @@
 		</header>
 
 		<section id="main">
+			<nav id="navigation" class="navigation">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/pomodoris">Pomodoris</a></li>
+				</ul>
+			</nav>
 			<% if flash[:notice] %>
 			  <div class="notice"><%= flash[:notice] %></div>
 			<% end %>
-			
+
 			<%= yield %>
 		</section>
 
