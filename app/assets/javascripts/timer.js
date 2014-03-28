@@ -56,6 +56,10 @@ function finishPomodoro(){
 		url: "/pomodoris/set_finished"
 	});
 	view.playDing();
+	/* $.ajax({
+		type: 'POST',
+		url: "/pomodoris/set_tags"
+	}); */
 	current_is_break = true;
 	view.showStartButton();
 }
