@@ -2,6 +2,7 @@
 // ***************
 
 var view = {
+	show_remaining_time_as_percentage: false,
 	init: function(){
 		// On ready listeners, events and actions
 		$(document).ready(function(){
@@ -17,6 +18,26 @@ var view = {
 
 		});
 	},
+
+	// Sets the percentage
+	setPercentage: function(percent, remaining_time){
+		var _percent = Number(percent);
+		$('#timer-progress').attr("value", percent);
+		if(view.show_remaining_time_as_percentage){
+			$('.visible-progress-value').html(Math.floor(percent) + "%");
+		} else {
+			var remaining_time_string = remaining_time.getMinutes() + ":" + (remaining_time.getSeconds() < 10 ? "0"+remaining_time.getSeconds() : remaining_time.getSeconds());
+			$('.visible-progress-value').html(remaining_time_string);
+		}
+	},
+
+	// Plays ding sound, using HTML5 <audio> tag
+	playDing: function(){
+		document.getElementById('audio-ding').currentTime = 0;
+		document.getElementById('audio-ding').load();
+		document.getElementById('audio-ding').play();
+	},
+
 	showStartButton: function(){
 		view.hideWorkingButton();
 		view.hideRelaxingButton();
