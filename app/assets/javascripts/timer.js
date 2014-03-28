@@ -51,8 +51,15 @@ function incrementProgress(){
 // Finishes and saves pomodoro
 function finishPomodoro(){
 	stop();
+	$.ajax({
+		type: 'POST',
+		url: "/pomodoris/set_finished"
+	});
 	view.playDing();
-	$.ajax("/pomodoris/set_finished");
+	/* $.ajax({
+		type: 'POST',
+		url: "/pomodoris/set_tags"
+	}); */
 	current_is_break = true;
 	view.showStartButton();
 }
@@ -69,7 +76,12 @@ function start(){
 
 	view.setPercentage(0, current_remaining_time);
 	current_interval_id = setInterval(incrementProgress, 1000);
-  $.ajax("/pomodoris/create");
+	if (!current_is_break) {
+		$.ajax({
+			type: 'POST',
+			url: "/pomodoris/create"
+		});
+	}
 }
 
 // Stops timer

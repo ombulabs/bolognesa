@@ -19,4 +19,11 @@ $(document).ready(function() {
     $modal.hide();
     return false;
   });
+
+  /* $('input[name=submit]').click(function(){
+    $modal_container.hide();
+    $modal.hide();
+    return false;
+  }); */
+
 });
