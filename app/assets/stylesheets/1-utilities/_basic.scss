@@ -17,3 +17,7 @@ body {
 	color: #000;
 	background: #fff;
 }
+#main {
+	position: relative;
+	padding-top: 1px; // si that margins don't overflow
+}

@@ -100,10 +100,22 @@
       background: $button_background_color_inverse_active;
     }
   }
+  &.dark {
+    color: #ccc;
+    background: $button_background_color_dark;
+    &:hover {
+      color: #eee;
+      background: $button_background_color_dark_hover;
+    }
+    &:active, &:focus {
+      color: #fff;
+      background: $button_background_color_dark_active;
+    }
+  }
   &.inverse.primary, &.inverse.call-to-action {
-    color: $orange;
+    color: $magenta;
     &:active {
-      color: darken($orange, 12%);
+      color: darken($magenta, 12%);
     }
   }
   &[disabled], &.disabled{

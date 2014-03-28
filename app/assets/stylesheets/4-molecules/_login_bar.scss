@@ -15,7 +15,12 @@
 	}
 
 	img.user-image {
-		width: 19px;
+		display: inline-block;
+		width: 20px;
 		height: auto;
+		position: relative;
+		top: 4px;
+		margin-right: .4em;
+		@include border-radius(3px);
 	}
 }

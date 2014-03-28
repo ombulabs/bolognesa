@@ -25,6 +25,9 @@ $button_background_color_primary_active: darken($button_background_color_primary
 $button_background_color_inverse: #fff;
 $button_background_color_inverse_hover: lighten($light_grey, 4%);
 $button_background_color_inverse_active: darken($light_grey, 5%);
+$button_background_color_dark: lighten(#000, 10%);
+$button_background_color_dark_hover: lighten(#000, 15%);
+$button_background_color_dark_active: lighten(#000, 30%);
 
 // Measurements:
 $gutter: 30px;

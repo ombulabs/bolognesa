@@ -28,16 +28,16 @@
 			  <div class="login-bar">
 			  	<img src="<%= current_user.image %>" alt="User photo" class="user-image" />
 			  	<%= current_user.name %> 
-			  	<%= link_to '<i class="fa fa-times"></i> Logout'.html_safe, '/signout', :class =>"button small logout-button" %>
+			  	<%= link_to '<i class="fa fa-times"></i> Logout'.html_safe, '/signout', :class =>"button small dark logout-button" %>
 				</div>
 			<% end %>
 		</header>
 
-	<% if flash[:notice] %>
-	  <div class="notice"><%= flash[:notice] %></div>
-	<% end %>
-
 		<section id="main">
+			<% if flash[:notice] %>
+			  <div class="notice"><%= flash[:notice] %></div>
+			<% end %>
+			
 			<%= yield %>
 		</section>
 
