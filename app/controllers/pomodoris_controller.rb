@@ -12,15 +12,30 @@ class PomodorisController < ApplicationController
   end
 
   def edit
+    @pomodori = Pomodori.find(params[:id])
 
+    respond_to do |format|
+      format.js # { render :json => { :html => render_to_string('edit')}, :content_type => 'text/json' }
+    end
+  end
+
+  # Updates Pomodori's Tags
+  def update
+    @pomodori = Pomodori.find(params[:id])
+    name = params[:pomodori][:tag][:name]
+    @tag = Tag.find_or_create_by_name(name)
+    @pomodori.tags << @tag
+
+    respond_to do |format|
+      format.html { redirect_to root_path }
+    end
+
+    # @tag.update_attributes(:name => name)
   end
 
   def create
-    # If pomodori was not created within last 5 minutes, create new Pomodori
-    if current_user.can_pomodori?
-      if @pomodori = Pomodori.new(user_id: @current_user.id).save
-        redirect_to :root
-      end
+    if @pomodori = Pomodori.new(user_id: @current_user.id).save
+      redirect_to :root
     end
   end
 

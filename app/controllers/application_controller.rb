@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_filter :check_uri
   helper_method :current_user, :authenticate_user!
 
+  layout Proc.new { |controller| controller.request.xhr? ? nil : 'application' }
+
   def check_uri
     url = redirect_to request.protocol + 'www.' + request.host_with_port +
           request.fullpath if Rails.env.to_s == 'production' &&
