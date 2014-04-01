@@ -92,8 +92,8 @@ function finishBreak(){
   view.playDing();
   current_total_time_lapse = TIME_LAPSE_WORK;
   $('body').removeClass("break");
-  view.showStartButton();
   current_is_break = false;
+  view.showStartButton();
 }
 
 
