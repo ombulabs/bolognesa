@@ -41,6 +41,11 @@ var view = {
 	showStartButton: function(){
 		view.hideWorkingButton();
 		view.hideRelaxingButton();
+		if(current_is_break){
+			$('.start-button').html("Start break");
+		} else {
+			$('.start-button').html("Start");
+		}
 		$('.start-button').show();
 	},
 	showWorkingButton: function(){
