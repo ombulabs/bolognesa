@@ -8,7 +8,7 @@ var current_start_date;
 var current_finish_date;
 var current_remaining_time = new Date();
 var current_is_break = false;
-var testing_fast_mode = true;
+var testing_fast_mode = false;
 var current_total_time_lapse = TIME_LAPSE_WORK;
 
 // CONSTANTS
