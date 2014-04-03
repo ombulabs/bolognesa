@@ -14,7 +14,7 @@ var current_total_time_lapse = TIME_LAPSE_WORK;
 var TIME_LAPSE_WORK = 25*60*1000;
 var TIME_LAPSE_BREAK = 5*60*1000;
 var TIME_LAPSE_BREAK_LONG = 15*60*1000;
-var TESTING_FAST_MODE = true;
+var TESTING_FAST_MODE = false;
 
 
 // TIMER METHODS
@@ -69,10 +69,10 @@ function finishPomodoro(){
     url: "/pomodoris/set_finished"
   });
   view.playDing();
-  /* $.ajax({
+  $.ajax({
     type: 'POST',
     url: "/pomodoris/set_tags"
-  }); */
+  });
   current_is_break = true;
   view.showStartButton();
 }
