@@ -1,18 +1,15 @@
 // Pomodoro modal
 // ***************
 
-$(document).ready(function() {
+var $modal, $modal_close, $modal_container;
 
-  var $modal, $modal_close, $modal_container;
+$(document).ready(function() {
 
   $modal = $('#modal');
   $modal_close = $modal.find('.close');
   $modal_container = $('#modal-container');
 
-  $('.edit_tags').click(function(xhr, data, status) {
-    $modal.html(data).prepend($modal_close).css('top', $(window).scrollTop() + 40).show();
-    $modal_container.show();
-  });
+  applyEditTagButtonListeners();
 
   $(document).on('click', '#modal .close', function() {
     $modal_container.hide();
@@ -27,3 +24,10 @@ $(document).ready(function() {
   }); */
 
 });
+
+function applyEditTagButtonListeners(){
+  $('.edit_tags').click(function(xhr, data, status) {
+    $modal.html(data).prepend($modal_close).css('top', $(window).scrollTop() + 40).show();
+    $modal_container.show();
+  });
+}
