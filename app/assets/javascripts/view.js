@@ -66,7 +66,15 @@ var view = {
 	},
 	hideRelaxingButton: function(){
 		$('.relaxing-button').hide();
+	},
+
+	// Flashes pomodoro
+	flashPomodoro: function($pomodoro_to_flash){
+	  if($pomodoro_to_flash && $pomodoro_to_flash.length > 0) {
+	    $pomodoro_to_flash.delay(200).effect( "highlight", 1000 );
+	  }
 	}
+
 }
 
 // Initialize view
