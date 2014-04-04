@@ -1,12 +1,18 @@
-Edit your tags:
+<section class="edit-tags">
+  <h1>Edit your tags:</h1>
 
-<p /><%= @pomodori.tags.map(&:name).join(", ") %>
+  <ul class="pomodoro-tags-container">
+    <% for tag in @pomodori.tags %>
+      <li><%= tag.name %></li>
+    <% end %>
+  </ul>
 
-<%= form_for @pomodori, remote: true do |p| %>
-  <%= p.fields_for :tag do |t| %>
-    <%= t.label :name %>
-    <%= t.text_field :name %>
+  <%= form_for @pomodori, remote: true do |p| %>
+    <%= p.fields_for :tag do |t| %>
+      <%= t.label :name %>
+      <%= t.text_field :name %>
+    <% end %>
+
+    <%= p.submit %>
   <% end %>
-
-  <%= p.submit %>
-<% end %>
+</section>
