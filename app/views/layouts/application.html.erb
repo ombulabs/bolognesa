@@ -27,11 +27,20 @@
 		<header class="main-header">
 			<h1>Bolognesa</h1>
 			<% if current_user %>
-			  <div class="login-bar">
-			  	<img src="<%= current_user.image %>" alt="User photo" class="user-image" />
-			  	<%= current_user.name %>
-			  	<%= link_to '<i class="fa fa-times"></i> Logout'.html_safe, '/signout', :class =>"button small dark logout-button" %>
-				</div>
+			  <ul class="login-bar">
+			  	<li>
+				  	<img src="<%= current_user.image %>" alt="User photo" class="user-image" />
+				  	<%= current_user.name %>
+				  	<ul>
+				  		<li>
+				  			<a href="#">Settings</a>
+				  		</li>
+				  		<li>
+						  	<%= link_to '<i class="fa fa-times"></i> Logout'.html_safe, '/signout', :class =>"logout-button" %>
+				  		</li>
+				  	</ul>
+			  	</li>
+				</ul>
 			<% end %>
 		</header>
 

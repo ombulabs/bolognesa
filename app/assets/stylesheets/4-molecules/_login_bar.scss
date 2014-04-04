@@ -6,12 +6,54 @@
 
 .login-bar {
 	position: absolute;
-	top: $gutter;
+	top: ($gutter * 0.73333333);
 	right: $gutter;
 	font-size: .8em;
+  &:before {
+    // Magic learned from Bootstrap
+    content: " ";
+    display: table;
+  }
+  &:after {
+    // Magic learned from Bootstrap
+    content: " ";
+    display: table;
+    clear: both;
+  }
 
-	.logout-button {
+	&>li {
+		position: relative;
+		float: left; 
 		margin-left: .5em;
+		padding: .5em .8em;
+		&>ul {
+			width: 100%;
+			display: none;
+			z-index: 101;
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding-top: 2.8em;
+			text-align: left;
+			li {
+				background: $dark_grey;
+				margin: 0;
+				a {
+					display: block;
+					padding: .4em .8em;
+					text-decoration: none;
+					&:hover {
+						background: lighten($dark_grey, 5%);
+					}
+				}
+			}
+		}
+		&:hover {
+			background: $dark_grey;
+			ul {
+				display: block;
+			}
+		}
 	}
 
 	img.user-image {
