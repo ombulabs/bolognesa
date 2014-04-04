@@ -12,4 +12,8 @@ class Pomodori < ActiveRecord::Base
     self.where(["created_at >= ? AND created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day])
   end
 
+  def self.yesterday
+    self.where(["created_at >= ? AND created_at <= ?", Date.yesterday.beginning_of_day, Date.yesterday.end_of_day])
+  end
+
 end

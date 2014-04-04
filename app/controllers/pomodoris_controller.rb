@@ -2,9 +2,8 @@ class PomodorisController < ApplicationController
 
   def index
     @pomodoris = current_user.pomodoris.reverse
-
     respond_to do |format|
-      format.html # index.html.erb
+      format.js # index.html.erb
       # format.xml  { render :xml => @pomodoris }
       # format.csv  { export_csv(current_user.pomodoris.order_by([[:created_at, :desc]])) }
 
@@ -13,7 +12,6 @@ class PomodorisController < ApplicationController
 
   def edit
     @pomodori = Pomodori.find(params[:id])
-
     respond_to do |format|
       format.js # { render :json => { :html => render_to_string('edit')}, :content_type => 'text/json' }
     end
@@ -54,5 +52,18 @@ class PomodorisController < ApplicationController
     @pomodori = current_user.pomodoris.last
   end
 
+  def today
+    @pomodoris = current_user.pomodoris.today.reverse
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def yesterday
+    @pomodoris = current_user.pomodoris.yesterday.reverse
+    respond_to do |format|
+      format.js
+    end
+  end
 
 end

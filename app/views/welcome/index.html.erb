@@ -6,12 +6,7 @@
 
   <% if @pomodoris %>
 	  <section class="pomodoro-list-container">
-			<h1>Today:</h1>
-	  	<ul>
-				<div id="pomodoro-list">
-			    <%= render 'shared/pomodoros' %>
-			  </div>
-	  	</ul>
+			<%= render 'pomodoris/today' %>
 	  </section>
 	<% end %>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140328133353) do
+ActiveRecord::Schema.define(:version => 20140404132530) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20140328133353) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
+    t.string   "time_zone",  :default => "UTC"
   end
 
 end
