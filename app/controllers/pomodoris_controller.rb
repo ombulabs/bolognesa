@@ -1,7 +1,7 @@
 class PomodorisController < ApplicationController
 
   def index
-    @pomodoris = current_user.pomodoris.reverse
+    @pomodoris = current_user.pomodoris.order('created_at DESC')
     respond_to do |format|
       format.js # index.html.erb
       # format.xml  { render :xml => @pomodoris }
