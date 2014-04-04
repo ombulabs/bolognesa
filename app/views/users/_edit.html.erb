@@ -1,0 +1,7 @@
+Set your time zone:
+
+<%= form_for @user, remote: true do |u| %>
+  <%= u.label :time_zone %>
+  <%= u.time_zone_select :time_zone %>
+  <%= u.submit %>
+<% end %>

@@ -33,7 +33,7 @@
 				  	<%= current_user.name %>
 				  	<ul>
 				  		<li>
-				  			<a href="#"><i class="fa fa-list-alt"></i> Settings</a>
+				  			<%= link_to '<i class="fa fa-list-alt"></i> Settings'.html_safe, settings_path, :remote => true %>
 				  		</li>
 				  		<li>
 						  	<%= link_to '<i class="fa fa-times"></i> Logout'.html_safe, '/signout', :class =>"logout-button" %>
@@ -48,9 +48,9 @@
 			<% if current_user %>
 				<nav id="navigation" class="navigation">
 					<ul>
-						<li><a href="/">Today</a></li>
-						<li><a href="/yesterday">Yesterday</a></li>
-						<li><a href="/pomodoris">All pomodoris</a></li>
+						<li><%= link_to "Today", today_path, :remote => true %></li>
+						<li><%= link_to "Yesterday", yesterday_path, :remote => true %></li>
+						<li><%= link_to "All pomodoris", pomodoris_path, :remote => true %></li>
 					</ul>
 				</nav>
 			<% end %>
