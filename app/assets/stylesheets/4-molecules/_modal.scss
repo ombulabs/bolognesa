@@ -1,0 +1,36 @@
+/* === MODAL */
+/* ========================== */
+
+// Imports:
+@import "compass/css3";
+
+#modal, .modal {
+  display: none;
+  position: absolute;
+  width: 600px;
+  left: 50%;
+  margin-left: (-600px - 40px) / 2;
+  background: #fff;
+  padding: $gutter;
+  @include border-radius($global_border_radius);
+
+  & > .close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: #666;
+    &:hover, &:active {
+      color: #000;
+    }
+  }
+}
+
+#modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.4);
+}

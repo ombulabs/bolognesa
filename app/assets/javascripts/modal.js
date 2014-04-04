@@ -11,7 +11,7 @@ $(document).ready(function() {
 
   applyEditTagButtonListeners();
 
-  $(document).on('click', '#modal .close', function() {
+  $(document).on('click', '#modal .close, #modal-container', function() {
     $modal_container.hide();
     $modal.hide();
     return false;
