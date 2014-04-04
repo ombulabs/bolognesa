@@ -20,5 +20,6 @@ body {
 }
 #main {
 	position: relative;
-	padding-top: 1px; // si that margins don't overflow
+
+	padding-top: $gutter; // space, and so that margins don't overflow.
 }
