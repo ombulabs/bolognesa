@@ -14,7 +14,7 @@ var current_total_time_lapse = TIME_LAPSE_WORK;
 var TIME_LAPSE_WORK = 25*60*1000;
 var TIME_LAPSE_BREAK = 5*60*1000;
 var TIME_LAPSE_BREAK_LONG = 15*60*1000;
-var TESTING_FAST_MODE = true;
+var TESTING_FAST_MODE = false;
 
 
 // TIMER METHODS

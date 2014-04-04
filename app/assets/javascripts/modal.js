@@ -16,9 +16,6 @@ $(document).ready(function() {
   $(document).on('click', '#modal .close, #modal-container', function() {
     $modal_container.hide();
     $modal.hide();
-    if($clicked_pomodoro && $clicked_pomodoro.length > 0){
-      view.flashPomodoro($clicked_pomodoro);
-    }
     return false;
   });
 

@@ -4,3 +4,6 @@ $('#modal-container').hide();
 $("#pomodoro-list").html("<%= escape_javascript(render 'shared/pomodoros') %>");
 
 applyEditTagButtonListeners();
+
+// Flash the recently created pomodoro
+view.flashPomodoro($('#pomodoro-list>li:first-child'));
