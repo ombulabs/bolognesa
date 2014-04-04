@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'rails', '3.1.12'
 
 # Bundle edge Rails instead:
@@ -11,6 +13,7 @@ end
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'pry'
 end
 
 # Gems used only for assets and not required
@@ -42,8 +45,6 @@ gem 'omniauth-github'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-
-gem 'pry'
 
 group :test do
   # Pretty printed test output
