@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140404132530) do
+ActiveRecord::Schema.define(:version => 20140411145013) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -41,13 +41,7 @@ ActiveRecord::Schema.define(:version => 20140404132530) do
     t.datetime "updated_at"
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "image"
-    t.string   "time_zone",  :default => "UTC"
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'hash' for column 'auth_hash'
 
 end
