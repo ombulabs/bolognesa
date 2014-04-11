@@ -10,12 +10,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def can_pomodori?
-    if last_pomodori = self.pomodoris.last
-      last_pomodori.created_at < Time.now - 5.minutes
-    else
-      return true
-    end
+  def auth_json
+    JSON.parse(self.auth_hash)
   end
 
 end
