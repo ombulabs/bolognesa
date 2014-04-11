@@ -65,4 +65,9 @@ class PomodorisController < ApplicationController
     end
   end
 
+  def import
+    Pomodori.import(params[:file], current_user)
+    redirect_to root_url, :notice => "Pomodoros imported from tomato.es"
+  end
+
 end

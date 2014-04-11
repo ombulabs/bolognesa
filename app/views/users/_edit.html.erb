@@ -1,9 +1,20 @@
-<h1>Set your time zone:</h1>
+<h1>Set your time zone</h1>
 
 <%= form_for @user, remote: true do |u| %>
-  <%= u.label :time_zone %>
+  <%= u.label :time_zone, :class => "hidden" %>
   <%= u.time_zone_select :time_zone %>
   <p>
-    <%= u.submit :class => "button primary" %>
+    <%= u.submit "Update time zone", :class => "button primary" %>
+  </p>
+<% end %>
+
+<p></p>
+
+<h1>Import from tomato.es</h1>
+
+<%= form_tag import_pomodoris_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <p>
+    <%= submit_tag "Import", :class => "button primary" %>
   </p>
 <% end %>

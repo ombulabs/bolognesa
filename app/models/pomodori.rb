@@ -1,5 +1,7 @@
 class Pomodori < ActiveRecord::Base
 
+  require 'CSV'
+
   belongs_to :user
   has_many :tags, :through => :pomodori_tags
   has_many :pomodori_tags
@@ -14,6 +16,19 @@ class Pomodori < ActiveRecord::Base
 
   def self.yesterday
     self.where(["created_at >= ? AND created_at <= ?", Date.yesterday.beginning_of_day, Date.yesterday.end_of_day])
+  end
+
+  def self.import(file, user)
+    tags = []
+    CSV.foreach(file.path, :headers => true) do |row|
+      pomodori = Pomodori.create!(created_at: row[0].to_datetime - 25.minutes, finished_at: row[0].to_datetime)
+      row[1].split(", ").each do |tag|
+        tag = Tag.find_or_create_by_name(name: tag)
+        pomodori.tags << tag
+      end
+      user.pomodoris << pomodori
+      user.save
+    end
   end
 
 end
