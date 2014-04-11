@@ -22,17 +22,16 @@ class PomodorisController < ApplicationController
     @pomodoris = current_user.pomodoris.today.reverse
     @pomodori = Pomodori.find(params[:id])
     name = params[:pomodori][:tag][:name]
-    @tag = Tag.find_or_create_by_name(name)
-    unless @pomodori.tags.include?(@tag)
-      @pomodori.tags << @tag
+    name.split(",").each do |tag|
+      @tag = Tag.find_or_create_by_name(tag.strip)
+      unless @pomodori.tags.include?(@tag)
+        @pomodori.tags << @tag
+      end
     end
 
     respond_to do |format|
       format.js
-      #format.html { redirect_to root_path }
     end
-
-    # @tag.update_attributes(:name => name)
   end
 
   def create
