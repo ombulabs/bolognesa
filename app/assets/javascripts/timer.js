@@ -67,8 +67,6 @@ function finishPomodoro(){
   $.ajax({
     type: 'POST',
     url: "/pomodoris/set_finished"
-  }).done(function(){
-    view.flashPomodoro($('#pomodoro-list>li:first-child'));
   });
   view.playDing();
   $.ajax({

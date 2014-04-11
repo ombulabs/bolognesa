@@ -1,18 +1,25 @@
 <section class="edit-tags">
-  <h1>Edit your tags:</h1>
+  <header class="modal-header">
+    <h1>Edit your tags:</h1>
+  </header>
 
-  <ul class="pomodoro-tags-container">
-    <% for tag in @pomodori.tags %>
-      <li><%= tag.name %></li>
+  <div class="modal-content">
+    <ul class="pomodoro-tags-container">
+      <% for tag in @pomodori.tags %>
+        <li class="tag"><%= tag.name %></li>
+      <% end %>
+    </ul>
+
+    <%= form_for @pomodori, remote: true do |p| %>
+      <%= p.fields_for :tag do |t| %>
+        <%= t.label :name , class: "hidden" %>
+        <%= t.text_field :name, class: "text-input"  %>
+      <% end %>
+
+      <div class="form-actions">
+        <%= p.submit "Update pomodori", :class => 'button primary' %>
+      </div>
     <% end %>
-  </ul>
+  </div>
 
-  <%= form_for @pomodori, remote: true do |p| %>
-    <%= p.fields_for :tag do |t| %>
-      <%= t.label :name %>
-      <%= t.text_field :name %>
-    <% end %>
-
-    <%= p.submit %>
-  <% end %>
 </section>

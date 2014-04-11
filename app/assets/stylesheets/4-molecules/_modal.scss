@@ -11,8 +11,8 @@
   left: 50%;
   margin-left: (-600px - 40px) / 2;
   background: #fff;
-  padding: $gutter;
   @include border-radius($global_border_radius);
+  overflow: hidden;
 
   & > .close {
     position: absolute;
@@ -22,6 +22,21 @@
     &:hover, &:active {
       color: #000;
     }
+  }
+  .modal-header {
+    background: $light_grey;
+    padding: ($gutter/2) $gutter;
+    h1 {
+      font-size: 1.1em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  }
+  .modal-content {
+    padding: $gutter;
+  }
+  .pomodoro-tags-container {
+    margin-bottom: 1em;
   }
 }
 

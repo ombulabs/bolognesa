@@ -1,2 +1,3 @@
-$("#modal").html("<a href='#' class='close'>close</a> <%= escape_javascript(render 'edit') %>").css('top', $(window).scrollTop() + 40).show();
+$("#modal").html("<%= escape_javascript(render 'edit') %>").css('top', $(window).scrollTop() + 40).show();
 $('#modal-container').show();
+$('#pomodori_tag_name').focus();

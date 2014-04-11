@@ -6,4 +6,4 @@ $("#pomodoro-list").html("<%= escape_javascript(render 'shared/pomodoros') %>");
 applyEditTagButtonListeners();
 
 // Flash the recently created pomodoro
-view.flashPomodoro($('#pomodoro-list>li:first-child'));
+view.flashPomodoro($('#pomodoro-<%= @pomodori.id %>'));

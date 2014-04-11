@@ -23,3 +23,6 @@ body {
 
 	padding-top: $gutter; // space, and so that margins don't overflow.
 }
+.hidden {
+  display: none;
+}

@@ -1,6 +1,6 @@
 <% @pomodoris.each do |pomodoro| %>
   <% if pomodoro.finished_at %>
-    <li class="pomodoro">
+    <li class="pomodoro" id="pomodoro-<%= pomodoro.id %>">
       <strong>Pomodoro <span class="pomodoro-id">#<%= pomodoro.id %></span></strong> 
       - <span class="pomodoro-created-at"><%= pomodoro.created_at.strftime("%I:%M %p") %></span>  
       - <span class="pomodoro-finished-at"><%= pomodoro.finished_at.strftime("%I:%M %p") %></span> 

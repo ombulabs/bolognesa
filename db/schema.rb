@@ -41,7 +41,14 @@ ActiveRecord::Schema.define(:version => 20140411145013) do
     t.datetime "updated_at"
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'json' for column 'auth_hash'
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image"
+    t.string   "time_zone",  :default => "UTC"
+    t.text     "auth_hash"
+  end
 
 end

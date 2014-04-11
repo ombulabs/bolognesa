@@ -1,3 +1,5 @@
 $("#pomodoro-list").html("<%= escape_javascript(render 'shared/pomodoros') %>");
 
 applyEditTagButtonListeners();
+
+view.flashPomodoro($('#pomodoro-<%= @pomodori.id %>'));

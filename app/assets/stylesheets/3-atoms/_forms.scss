@@ -4,7 +4,6 @@
 
 label {
 	@include font-lato-normal;
-	color: #fff;
 	margin-top: 1em;
 	margin-bottom: .2em;
 	display: block;
@@ -13,11 +12,17 @@ label {
 .text-input {
 	display: block;
 	border: none;
-	background: #fff;
+	background: $light_grey;
 	padding: 10px;
 	width: 100%;
-	@include border-radius(2px);
+	@include border-radius($global_border_radius);
 	font-size: 1em;
+	margin-top: .5em;
+	margin-bottom: .5em;
+	@include box-shadow(rgba(#000,.1) 0 1px 2px inset);
+	&:focus {
+		background: lighten($light_grey, 5%);
+	}
 }
 .form-error {
 	background: $orange;
@@ -31,4 +36,7 @@ label {
 	color: #fff;
 	@include font-lato-normal;
 	font-size: 1.5em;
+}
+.form-actions {
+	margin-top: 2em;
 }
