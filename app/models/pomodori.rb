@@ -1,6 +1,6 @@
 class Pomodori < ActiveRecord::Base
 
-  require 'CSV'
+  require 'csv'
 
   belongs_to :user
   has_many :tags, :through => :pomodori_tags
