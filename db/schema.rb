@@ -42,6 +42,6 @@ ActiveRecord::Schema.define(:version => 20140411145013) do
   end
 
 # Could not dump table "users" because of following StandardError
-#   Unknown type 'hash' for column 'auth_hash'
+#   Unknown type 'json' for column 'auth_hash'
 
 end
