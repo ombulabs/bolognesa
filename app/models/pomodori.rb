@@ -11,7 +11,11 @@ class Pomodori < ActiveRecord::Base
   end
 
   def repeat_tags
-    self.tags = second_to_last.tags
+    if self.tags.empty?
+      self.tags = second_to_last.tags
+    else
+      self.tags = self.user.pomodoris.last.tags
+    end
   end
 
   def second_to_last

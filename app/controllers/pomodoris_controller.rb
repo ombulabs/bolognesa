@@ -71,10 +71,9 @@ class PomodorisController < ApplicationController
   end
 
   def repeat_tags
+    @pomodori = current_user.pomodoris.find(params[:pomodoro_id])
     @pomodoris = current_user.pomodoris.today.reverse
-    @pomodori = current_user.pomodoris.last
     @pomodori.repeat_tags
-    # render :template => 'update.js.erb'
     respond_to do |format|
       format.js { render :action => "update" }
     end
