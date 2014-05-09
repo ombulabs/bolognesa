@@ -34,3 +34,12 @@ function applyEditTagButtonListeners(){
     $modal_container.show();
   });
 }
+
+function loadTagIt(){
+  console.log("loadTagIt");
+  $('#pomodori_tag_name').tagit({
+      //availableTags: sampleTags,
+      singleField: true,
+      allowSpaces: true
+  });
+}
