@@ -4,9 +4,6 @@ ruby '2.1.0'
 
 gem 'rails', '3.2.18'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
 group :production do
   gem 'pg'
 end
@@ -43,10 +40,12 @@ gem 'omniauth-github'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
 group :test do
   # Pretty printed test output
   gem 'turn', '~> 0.8.3', :require => false
+  gem 'capybara', git: 'git@github.com:jnicklas/capybara.git'
+  gem 'rspec-rails', '~> 2.14.1'
+  gem 'rspec-core', '~> 2.14.7'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver', '~> 2.39.0'
 end
