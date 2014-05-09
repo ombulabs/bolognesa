@@ -1,0 +1,4 @@
+<% for tag in @pomodori.tags %>
+  <li class="tag"><%= tag.name %></li>
+  <%= link_to "x", delete_tag_path(:pomodori_id => @pomodori.id, :tag_id => tag.id), remote: true %>
+<% end %>

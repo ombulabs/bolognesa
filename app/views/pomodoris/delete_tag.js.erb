@@ -1,0 +1,3 @@
+$(".pomodoro-tags-container").html("<%= escape_javascript(render 'tags') %>")
+$("#pomodoro-list").html("<%= escape_javascript(render 'shared/pomodoros') %>");
+applyEditTagButtonListeners();
