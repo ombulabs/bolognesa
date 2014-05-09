@@ -79,4 +79,13 @@ class PomodorisController < ApplicationController
     end
   end
 
+  def delete_tag
+    @pomodoris = current_user.pomodoris.today.reverse
+    @pomodori = current_user.pomodoris.find(params[:pomodori_id])
+    @tag = @pomodori.tags.find(params[:tag_id])
+    @tag.destroy
+    respond_to do |format|
+      format.js
+    end
+  end
 end

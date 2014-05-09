@@ -5,9 +5,7 @@
 
   <div class="modal-content">
     <ul class="pomodoro-tags-container">
-      <% for tag in @pomodori.tags %>
-        <li class="tag"><%= tag.name %></li>
-      <% end %>
+      <%= render 'tags' %>
     </ul>
 
     <%= form_for @pomodori, remote: true do |p| %>
