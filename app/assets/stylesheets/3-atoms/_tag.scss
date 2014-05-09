@@ -4,17 +4,15 @@
 // Imports:
 @import "compass/css3";
 
+.pomodoro-tags-container {
+  margin-left: -0.2em;
+  margin-right: -0.2em;
+}
 .tag {
   background: $light_yellow;
   display: inline-block;
   @include border-radius($global_border_radius);
   border: darken($light_yellow, 3%) 1px solid;
   padding: .2em .5em;
-  margin: auto .2em;
-  &:first-child {
-    margin-left: 0;
-  }
-  &:last-child {
-    margin-right: 0;
-  }
+  margin: auto .2em .5em;
 }
