@@ -66,8 +66,18 @@ class PomodorisController < ApplicationController
   end
 
   def import
-    Pomodori.import(params[:file], current_user)
+    Pomodori.import(params[:file], current_user) # safe?
     redirect_to root_url, :notice => "Pomodoros imported from tomato.es"
+  end
+
+  def repeat_tags
+    @pomodoris = current_user.pomodoris.today.reverse
+    @pomodori = current_user.pomodoris.last
+    @pomodori.repeat_tags
+    # render :template => 'update.js.erb'
+    respond_to do |format|
+      format.js { render :action => "update" }
+    end
   end
 
 end

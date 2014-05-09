@@ -22,5 +22,6 @@ Bolognesa::Application.routes.draw do
   match "/yesterday" => "pomodoris#yesterday"
 
   match "/settings" => "users#edit"
+  match "/repeat_tags" => "pomodoris#repeat_tags"
 
 end

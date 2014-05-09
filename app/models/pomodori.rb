@@ -10,6 +10,14 @@ class Pomodori < ActiveRecord::Base
     self.update_attributes(:finished_at => Time.now)
   end
 
+  def repeat_tags
+    self.tags = second_to_last.tags
+  end
+
+  def second_to_last
+    self.user.pomodoris.order("created_at DESC").offset(1).limit(1).first
+  end
+
   def self.today
     self.where(["created_at >= ? AND created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day])
   end
