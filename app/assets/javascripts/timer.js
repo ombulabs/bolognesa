@@ -69,6 +69,7 @@ function finishPomodoro(){
     url: "/pomodoris/set_finished"
   });
   view.playDing();
+  document.title = "Bolognesa"
   $.ajax({
     type: 'POST',
     url: "/pomodoris/set_tags"
@@ -90,6 +91,7 @@ function startBreak(){
 function finishBreak(){
   stop();
   view.playDing();
+  document.title = "Bolognesa"
   current_total_time_lapse = TIME_LAPSE_WORK;
   $('body').removeClass("break");
   current_is_break = false;

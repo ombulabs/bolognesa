@@ -1,6 +1,7 @@
 // Bolognesa view
 // ***************
 
+var title = document.title;
 var view = {
 	show_remaining_time_as_percentage: false,
 	init: function(){
@@ -28,6 +29,7 @@ var view = {
 		} else {
 			var remaining_time_string = remaining_time.getMinutes() + ":" + (remaining_time.getSeconds() < 10 ? "0"+remaining_time.getSeconds() : remaining_time.getSeconds());
 			$('.visible-progress-value').html(remaining_time_string);
+			document.title = title + " (" + remaining_time_string + ")";
 		}
 	},
 
