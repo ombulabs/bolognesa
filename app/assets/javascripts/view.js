@@ -42,7 +42,9 @@ var view = {
 		view.hideWorkingButton();
 		view.hideRelaxingButton();
 		if(current_is_break){
-			$('.start-button').html("Start break");
+			$('.start-button').html("Start break" +
+			"<br /><div style='font-size: 0.4em; margin-bottom: -10px'>" +
+			"Or skip pressing esc </div>");
 		} else {
 			$('.start-button').html("Start");
 		}

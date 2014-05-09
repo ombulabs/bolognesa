@@ -6,3 +6,12 @@
 //= require view
 //= require modal
 //= require_tree .
+
+// Stop/skip current pomodoro/break using escape key.
+$(document).keyup(function(e) {
+    if (e.keyCode == 27) { //escape key
+      if(confirm("Skip current pomodoro/break?")) {
+        window.location.reload();
+      }
+    }
+});
