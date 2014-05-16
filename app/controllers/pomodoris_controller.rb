@@ -1,13 +1,8 @@
 class PomodorisController < ApplicationController
+  respond_to :html, :json
 
   def index
-    @pomodoris = current_user.pomodoris.order('created_at DESC')
-    respond_to do |format|
-      format.js # index.html.erb
-      # format.xml  { render :xml => @pomodoris }
-      # format.csv  { export_csv(current_user.pomodoris.order_by([[:created_at, :desc]])) }
-
-    end
+    respond_with(@pomodoris = current_user.pomodoris.order('created_at DESC'))
   end
 
   def edit
@@ -35,7 +30,9 @@ class PomodorisController < ApplicationController
   end
 
   def create
-    Pomodori.new(user_id: current_user.id).save
+    @pomodori = Pomodori.new(user_id: current_user.id)
+    @pomodori.save
+    respond_with @pomodori
   end
 
   def set_finished

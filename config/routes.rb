@@ -1,6 +1,6 @@
 Bolognesa::Application.routes.draw do
 
-  root to: 'welcome#index'
+  root to: 'pomodoris#index'
 
   resources :users do
     resources :pomodoris

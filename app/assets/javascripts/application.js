@@ -6,6 +6,10 @@
 //= require timer
 //= require view
 //= require modal
+//
+//= require underscore-min
+//= require backbone
+//= require bolognesa
 //= require_tree .
 
 var skip_pomodoro = false;
