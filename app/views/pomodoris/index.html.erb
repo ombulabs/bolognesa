@@ -29,11 +29,8 @@
 <% end %>
 
 <script type="text/template" id="pomodoro-template">
-	<li class="pomodoro" id="pomodoro-<%= pomodoro.id %>">
-		<strong>Pomodoro <span class="pomodoro-id">#<%= pomodoro.id %></span></strong>
-		- <span class="pomodoro-created-at"><%= pomodoro.created_at %></span>
-		- <span class="pomodoro-finished-at"><%= pomodoro.finished_at %></span> 
-		- <strong>Tags:</strong> <span class="pomodoro-tags-container"><%= pomodoro.tags %></span>
-		// <%= link_to '<i class="fa fa-edit"></i> Edit tags'.html_safe, edit_user_pomodori_path(current_user.id, pomodoro.id), :remote => true, :class => "edit_tags button small" %>
-	</li>
+		<strong>Pomodoro <span class="pomodoro-id">#{{ id }}</span></strong>
+		- <span class="pomodoro-created-at">{{ created_at_fmt }}</span>
+		- <span class="pomodoro-finished-at">{{ finished_at }}</span>
+		- <strong>Tags:</strong> <span class="pomodoro-tags-container"></span>
 </script>
