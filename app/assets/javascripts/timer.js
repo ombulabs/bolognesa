@@ -111,12 +111,6 @@ function start(){
 
   view.setPercentage(0, current_remaining_time);
   current_interval_id = setInterval(incrementProgress, 1000);
-  if (!current_is_break) {
-    $.ajax({
-      type: 'POST',
-      url: "/pomodoris/create"
-    });
-  }
 }
 
 // Stops timer
