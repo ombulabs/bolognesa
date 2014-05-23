@@ -1,29 +1,35 @@
-$(function()){
+$(function(){
 
-  // Pomodori Model
-  window.Pomodori = Backbone.Model.extend({});
+  // Pomodoro Model
+  window.Pomodoro = Backbone.Model.extend({});
 
-  // Pomodori Collection
-  window.PomodoriList = Backbone.Collection.extend({
+  // Pomodoro Collection
+  window.PomodoroList = Backbone.Collection.extend({
 
-    model: Pomodori,
-    url: '/',
-
-    today: function() { }
+    model: Pomodoro,
+    url: '/pomodoris'
 
   });
 
-  // Create global collection of Pomodoris
-  window.Pomodoris = new PomodoriList;
+  // Apply Mustache-style delimiters:
+  //    {% statements %} for executing arbitrary JavaScript code
+  //    {{ var }}        for interpolating values
+  _.templateSettings = {
+	  evaluate    : /\{%([\s\S]+?)%\}/g,
+	  interpolate : /\{\{([\s\S]+?)\}\}/g
+  };
 
-  window.PomodoriView = Backbone.View.extend({
+  // Create global collection of Pomodoros
+  window.Pomodoros = new PomodoroList;
+
+  window.PomodoroView = Backbone.View.extend({
 
     tagName: "li",
-
-    template: _.template($('#pomodori-template').html()),
+    className: "pomodoro",
+    template: _.template($('#pomodoro-template').html()),
 
     events: {
-      "click .edit_tags" : "editTags"
+
     },
 
     initialize: function() {
@@ -31,17 +37,18 @@ $(function()){
     },
 
     render: function() {
-      $(this.el).html(this.template(this.model.toJSON()));
+      var pomodoro = this.model.toJSON();
+      pomodoro['created_at_fmt'] = Util.formatTime(pomodoro['created_at']);
+      // pomodoro['finished_at_fmt'] = Util.formatTime(pomodoro['finished_at']);
+      $(this.el).html(this.template(pomodoro));
       return this;
-    },
-
-    editTags: function() {
-
     }
 
   });
 
   window.AppView = Backbone.View.extend({
+
+    el: $('#main'),
 
     events: {
       "click .start-button" : "startPomodoro"
@@ -64,9 +71,28 @@ $(function()){
     // Add all items in the Pomodoros collection at once.
     addAll: function() {
       Pomodoros.each(this.addOne);
+    },
+
+    startPomodoro: function() {
+      var pom = new Pomodoro();
+      Pomodoros.create(pom, { wait: true });
     }
 
   });
+
+  function Util() {};
+
+  Util.formatTime = function(d) {
+      d = new Date(d);
+      var hours = d.getHours();
+      var minutes = d.getMinutes();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      minutes = minutes < 10 ? '0'+minutes : minutes;
+      var strTime = hours + ':' + minutes + ' ' + ampm;
+      return strTime;
+  };
 
   window.App = new AppView;
 
