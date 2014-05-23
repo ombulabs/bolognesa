@@ -2,7 +2,9 @@ class PomodorisController < ApplicationController
   respond_to :html, :json
 
   def index
-    respond_with @pomodoris = current_user.pomodoris.order('created_at DESC')
+    if current_user
+      respond_with(@pomodoris = current_user.pomodoris, include: :tags)
+    end
   end
 
   def edit
