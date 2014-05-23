@@ -2,13 +2,13 @@ class PomodorisController < ApplicationController
   respond_to :html, :json
 
   def index
-    respond_with(@pomodoris = current_user.pomodoris.order('created_at DESC'))
+    respond_with @pomodoris = current_user.pomodoris.order('created_at DESC')
   end
 
   def edit
     @pomodori = Pomodori.find(params[:id])
     respond_to do |format|
-      format.js # { render :json => { :html => render_to_string('edit')}, :content_type => 'text/json' }
+      format.js
     end
   end
 
@@ -37,10 +37,9 @@ class PomodorisController < ApplicationController
 
   def set_finished
     @pomodoris = current_user.pomodoris.today.reverse
-    if @pomodori = current_user.pomodoris.last.set_finished
-      respond_to do |format|
-        format.js # { redirect_to root_path }
-      end
+    @pomodori = current_user.pomodoris.last.set_finished
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -63,7 +62,7 @@ class PomodorisController < ApplicationController
   end
 
   def import
-    Pomodori.import(params[:file], current_user) # safe?
+    Pomodori.import(params[:file], current_user)
     redirect_to root_url, :notice => "Pomodoros imported from tomato.es"
   end
 
