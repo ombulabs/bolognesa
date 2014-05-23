@@ -1,7 +1,21 @@
 $(function(){
 
+  // Apply Mustache-style delimiters:
+  //    {% statements %} for executing arbitrary JavaScript code
+  //    {{ var }}        for interpolating values
+  _.templateSettings = {
+    evaluate    : /\{%([\s\S]+?)%\}/g,
+    interpolate : /\{\{([\s\S]+?)\}\}/g
+  };
+
   // Pomodoro Model
-  window.Pomodoro = Backbone.Model.extend({});
+  window.Pomodoro = Backbone.Model.extend({
+
+    initialize: function() {
+      this.tags = new TagList(this.get('tags'));
+    }
+
+  });
 
   // Pomodoro Collection
   window.PomodoroList = Backbone.Collection.extend({
@@ -11,13 +25,10 @@ $(function(){
 
   });
 
-  // Apply Mustache-style delimiters:
-  //    {% statements %} for executing arbitrary JavaScript code
-  //    {{ var }}        for interpolating values
-  _.templateSettings = {
-	  evaluate    : /\{%([\s\S]+?)%\}/g,
-	  interpolate : /\{\{([\s\S]+?)\}\}/g
-  };
+  // Tag Model
+  window.Tag = Backbone.Model.extend({});
+  // Tag Collection
+  window.TagList = Backbone.Collection.extend({ model: Tag });
 
   // Create global collection of Pomodoros
   window.Pomodoros = new PomodoroList;
@@ -33,14 +44,23 @@ $(function(){
     },
 
     initialize: function() {
-
+      Pomodoros.bind('change', this.render, this);
     },
 
     render: function() {
+      // Stringify tags as "tag1, tag2, tag3"
+      var tags = this.model.get('tags').map(
+        function(elem) {
+          return elem.name;
+        }).join(", ");
+      // Set them in pomodoro's joined-tags attribute
+      this.model.set('joinedtags', tags)
+
       var pomodoro = this.model.toJSON();
       pomodoro['created_at_fmt'] = Util.formatTime(pomodoro['created_at']);
-      // pomodoro['finished_at_fmt'] = Util.formatTime(pomodoro['finished_at']);
-      $(this.el).html(this.template(pomodoro));
+      pomodoro['finished_at_fmt'] = Util.formatTime(pomodoro['finished_at']);
+      $(this.$el).attr('id', 'pomodoro-' + pomodoro.id); // Adds pomodoro-id
+      $(this.$el).html(this.template(pomodoro));
       return this;
     }
 
@@ -57,15 +77,13 @@ $(function(){
     initialize: function() {
       Pomodoros.bind('add', this.addOne, this);
       Pomodoros.bind('reset', this.addAll, this);
-      Pomodoros.bind('all', this.render, this);
-
       Pomodoros.fetch();
     },
 
     // Add a single Pomodoro to the list by creating a view for it
     addOne: function(pomodoro) {
       var view = new PomodoroView({model: pomodoro});
-      this.$("#pomodoro-list").append(view.render().el);
+      this.$("#pomodoro-list").prepend(view.render().el);
     },
 
     // Add all items in the Pomodoros collection at once.
@@ -73,6 +91,7 @@ $(function(){
       Pomodoros.each(this.addOne);
     },
 
+    // Triggered with start button, creates a Pomodoro in the backend.
     startPomodoro: function() {
       var pom = new Pomodoro();
       Pomodoros.create(pom, { wait: true });
