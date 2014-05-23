@@ -15,7 +15,7 @@
       <% end %>
 
       <div class="form-actions">
-        <%= p.submit "Update pomodori", :class => 'button primary' %>
+        <%= p.submit "Update pomodori", :class => 'button primary', :id => 'update-pomodori' %>
         <%= link_to "Repeat last used tags", repeat_tags_path(:pomodoro_id => @pomodori.id), :class => 'button', remote: true %>
       </div>
     <% end %>
