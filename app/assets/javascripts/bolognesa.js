@@ -40,7 +40,7 @@ $(function(){
     template: _.template($('#pomodoro-template').html()),
 
     events: {
-
+      "click #update-pomodori" : "render" // TODO: Not working!
     },
 
     initialize: function() {
@@ -71,7 +71,9 @@ $(function(){
     el: $('#main'),
 
     events: {
-      "click .start-button" : "startPomodoro"
+      "click .start-button" : "startPomodoro",
+      "click .edit_tags" : "openModal",
+      "click #modal.close, #modal-container" : "closeModal"
     },
 
     initialize: function() {
@@ -95,6 +97,18 @@ $(function(){
     startPomodoro: function() {
       var pom = new Pomodoro();
       Pomodoros.create(pom, { wait: true });
+    },
+
+    openModal: function(xhr, data, status) {
+      $('#modal').html(data).prepend($('#modal').find('.close'))
+                            .css('top', $(window).scrollTop() + 40).show();
+      $('#modal-container').show();
+    },
+
+    closeModal: function() {
+      $('#modal').hide();
+      $('#modal-container').hide();
+      return false;
     }
 
   });
