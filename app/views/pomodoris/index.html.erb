@@ -33,4 +33,6 @@
 		- <span class="pomodoro-created-at">{{ created_at_fmt }}</span>
 		- <span class="pomodoro-finished-at">{{ finished_at_fmt }}</span>
 		- <strong>Tags:</strong> <span class="pomodoro-tags-container">{{ joinedtags }}</span>
+		<a href="/pomodoris/{{ id }}/edit" class="edit_tags button small"
+		data-remote="true"><i class="fa fa-edit"></i> Edit tags</a>
 </script>
