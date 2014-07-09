@@ -12,6 +12,10 @@
       <%= p.fields_for :tag do |t| %>
         <%= t.label :name , class: "hidden" %>
         <%= t.text_field :name, class: "text-input"  %>
+        <% if @trello %>
+          <br>
+          Tag with Trello card: <%= t.select :trello_cards, eval(current_user.cards), include_blank: true, selected: @pomodori.card_name %>
+        <% end %>
       <% end %>
 
       <div class="form-actions">
