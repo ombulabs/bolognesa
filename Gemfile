@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.1.0'
+ruby '2.0.0'
 
 gem 'rails', '3.2.18'
 
@@ -31,6 +31,8 @@ gem 'rb-readline'
 # Using Omniauth-Github for Github login
 gem 'omniauth-github'
 
+gem 'ruby-trello'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -43,7 +45,6 @@ gem 'omniauth-github'
 group :test do
   # Pretty printed test output
   gem 'turn', '~> 0.8.3', :require => false
-  gem 'capybara', git: 'git@github.com:jnicklas/capybara.git'
   gem 'rspec-rails', '~> 2.14.1'
   gem 'rspec-core', '~> 2.14.7'
   gem 'database_cleaner'
