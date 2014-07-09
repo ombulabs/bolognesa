@@ -10,6 +10,21 @@
 
 <p></p>
 
+<% if @trello %>
+
+	<h1>Choose your Trello board</h1>
+
+	<%= form_for @user, remote: true do |u| %>
+	  <%= u.select :current_board, eval(current_user.boards).map {|k,v| k} %>
+	  <p>
+	    <%= u.submit "Update current board", :class => "button primary" %>
+	  </p>
+	<% end %>
+
+	<p></p>
+
+<% end %>
+
 <h1>Import from tomato.es</h1>
 
 <%= form_tag import_pomodoris_path, multipart: true do %>
