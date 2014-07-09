@@ -4,7 +4,11 @@
       <strong>Pomodoro <span class="pomodoro-id">#<%= pomodoro.id %></span></strong> 
       - <span class="pomodoro-created-at"><%= pomodoro.created_at.strftime("%I:%M %p") %></span>  
       - <span class="pomodoro-finished-at"><%= pomodoro.finished_at.strftime("%I:%M %p") %></span> 
-      - <strong>Tags:</strong> <span class="pomodoro-tags-container"><%= pomodoro.tags.map(&:name).join ', ' %></span>  
+        - <strong>Tags:</strong> <span class="pomodoro-tags-container">
+        <%= pomodoro.tags.map(&:name).join ', ' %></span>
+        <% if pomodoro.card_name && !pomodoro.card_name.blank? %>
+        - <strong>Trello Card:</strong> <span><%= pomodoro.card_name %></span>
+        <% end %>
       <%= link_to '<i class="fa fa-edit"></i> Edit tags'.html_safe, edit_user_pomodori_path(current_user.id, pomodoro.id), :remote => true, :class => "edit_tags button small" %> 
     </li>
   <% end %>
