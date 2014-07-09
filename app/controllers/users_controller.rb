@@ -10,10 +10,16 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @pomodoris = current_user.pomodoris.today.reverse
-    @user.time_zone = params[:user][:time_zone]
+    if params[:user][:time_zone]
+      @user.time_zone = params[:user][:time_zone]
+    elsif board = params[:user][:current_board] 
+      @user.current_board = board # Update current board. 
+      id = eval(current_user.boards)["#{board}"] # Get ID for chosen board. 
+      @user.cards = @trello.find(:boards, id).cards.map(&:name).to_s # Load cards from Trello.
+    end
     @user.save!
     respond_to do |format|
-      format.js
+      format.js 
     end
   end
 
