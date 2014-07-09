@@ -15,6 +15,27 @@
     <!-- Scripts -->
 	  <%= javascript_include_tag "application" %>
 
+	  <script src="//api.trello.com/1/client.js?key=27f4d6ec9fbc1e17be4f1464978e0199"></script>
+	  <script>
+
+		function AuthenticateTrello() {
+		  Trello.authorize({
+		    name: "Bolognesa",
+		    type: "popup",
+		    interactive: true,
+		    expiration: "never",
+		    persist: true,
+		    success: function () { onAuthorizeSuccessful(); },
+		    scope: { write: false, read: true },
+		  });
+		}
+		function onAuthorizeSuccessful() {
+		  var token = Trello.token();
+		  window.location.replace("/trello?token=" + token);
+		}
+
+	   </script>
+
 	  <%= csrf_meta_tags %>
 	</head>
 	<body class="application <% if current_user %>logged-in<% else %>logged-in-not<% end %>">
@@ -32,6 +53,14 @@
 				  		<li>
 						  	<%= link_to '<i class="fa fa-times"></i> Logout'.html_safe, '/signout', :class =>"logout-button" %>
 				  		</li>
+				  		<% if @trello %>
+				  		    <%= link_to '<i class="fa fa-trello"></i> Configure Trello Auth'.html_safe, settings_path, :remote => true %>
+			  			<% else %>
+				  		  <li>
+					  		<a href="javascript:void(0)" onclick="AuthenticateTrello()">Connect With Trello
+				  		    </a>
+					  	  </li>
+				  		<% end %>
 				  	</ul>
 			  	</li>
 				</ul>
