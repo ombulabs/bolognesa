@@ -24,3 +24,13 @@ $(window).bind('beforeunload', function(){
     return 'A pomodoro is currently running, and it will be lost if you exit.';
   }
 });
+
+window.addEventListener('load', function () {
+  if (window.Notification && Notification.permission !== "granted") {
+    Notification.requestPermission(function (status) {
+      if (Notification.permission !== status) {
+        Notification.permission = status;
+      }
+    });
+  }
+});

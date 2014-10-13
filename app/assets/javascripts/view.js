@@ -71,6 +71,12 @@ var view = {
 	hideRelaxingButton: function(){
 		$('.relaxing-button').hide();
 	},
+	showNotification: function(){
+	  if (window.Notification && Notification.permission === "granted") {
+		  var n = new Notification("Bolognesa",
+			                           {body: "Your pomodoro has finished!"});
+		}
+	},
 
 	// Flashes pomodoro
 	flashPomodoro: function($pomodoro_to_flash){
