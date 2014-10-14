@@ -27,10 +27,13 @@
 				  	<%= current_user.name %>
 				  	<ul>
 				  		<li>
-				  			<%= link_to '<i class="fa fa-list-alt"></i> Settings'.html_safe, settings_path, :remote => true %>
+				  			<%= link_to '<i class="fa fa-list-alt"></i> Settings'.html_safe, settings_path, remote: true %>
 				  		</li>
+							<li>
+								<%= link_to '<i class="fa fa-bar-chart-o"></i> Stats'.html_safe, stats_path, remote: true %>
+							</li>
 				  		<li>
-						  	<%= link_to '<i class="fa fa-times"></i> Logout'.html_safe, '/signout', :class =>"logout-button" %>
+						  	<%= link_to '<i class="fa fa-times"></i> Logout'.html_safe, '/signout', class: "logout-button" %>
 				  		</li>
 				  	</ul>
 			  	</li>
@@ -42,9 +45,9 @@
 			<% if current_user %>
 				<nav id="navigation" class="navigation">
 					<ul>
-						<li><%= link_to "Today", today_path, :remote => true %></li>
-						<li><%= link_to "Yesterday", yesterday_path, :remote => true %></li>
-						<li><%= link_to "All pomodoris", pomodoris_path, :remote => true %></li>
+						<li><%= link_to "Today", today_path, remote: true %></li>
+						<li><%= link_to "Yesterday", yesterday_path, remote: true %></li>
+						<li><%= link_to "All pomodoris", pomodoris_path, remote: true %></li>
 					</ul>
 				</nav>
 			<% end %>
