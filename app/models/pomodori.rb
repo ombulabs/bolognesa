@@ -43,11 +43,4 @@ class Pomodori < ActiveRecord::Base
     end
   end
 
-  def self.count_for_last_month(user)
-    where(user_id: user.id).
-    group('date(created_at)').count.map do |k, v|
-      [k.to_time.to_i*1000, v]
-    end
-  end
-
 end

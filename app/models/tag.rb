@@ -23,12 +23,4 @@ class Tag < ActiveRecord::Base
     map(&:name)
   end
 
-  def self.count_for_last_month(user)
-    joins(:pomodoris).
-    where(pomodoris: { user_id: user.id }).
-    group('date(pomodori_tags.created_at)').count.map do |k, v|
-      [k.to_time.to_i*1000, v]
-    end
-  end
-
 end

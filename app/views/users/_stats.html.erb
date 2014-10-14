@@ -1,8 +1,4 @@
-<h1>Stats</h1>
-
-<div id="most_used" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-
-<div id="count_last_month" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+<div id="most_used" style="min-width: 520px; height: 600px; max-width: 800px; margin: 0 auto"></div>
 
 <script>
 function loadScript( url, callback ) {
@@ -48,41 +44,6 @@ loadScript("https://code.highcharts.com/highcharts.js", function() {
           name: 'Tag',
           data: <%= raw @tag_names %>
       }]
-  });
-
-  $('#count_last_month').highcharts({
-      chart: {
-            type: 'spline'
-        },
-        title: {
-            text: 'Pomodori & Tag count per date'
-        },
-        xAxis: {
-            type: 'datetime',
-            dateTimeLabelFormats: {
-                day: '%e. %b'
-            },
-            title: {
-                text: 'Date'
-            }
-        },
-        yAxis: {
-            title: {
-                text: 'Pomodoris done'
-            },
-            min: 0
-        },
-        tooltip: {
-            pointFormat: '{point.y}'
-        },
-
-        series: [{
-            name: "Pomodoris",
-            data: <%= raw @pomodori_counts %>
-            }, {
-            name: "Tags",
-            data: <%= raw @tag_counts %>
-        }]
   });
 });
 
