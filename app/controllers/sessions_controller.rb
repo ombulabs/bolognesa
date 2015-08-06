@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       auth = Authorization.find_or_create_by_provider(auth_hash)
       session[:id] = auth.user_id
     end
-      redirect_to '/', :notice => "Signed in!"
+    redirect_to '/', :notice => "Signed in!"
   end
 
   def destroy
@@ -17,6 +17,12 @@ class SessionsController < ApplicationController
 
   def failure
     redirect_to '/', :alert => 'Sorry, something went wrong. Try again.'
+  end
+
+  def trello
+    current_user.trello_token = params[:token]
+    current_user.save!
+    redirect_to '/settings', :notice => 'Trello authorized succesfully! Please choose the board you will be using for your Pomodoros. '
   end
 
   protected

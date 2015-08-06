@@ -13,6 +13,7 @@ Bolognesa::Application.routes.draw do
   match "/auth/:provider/callback" => "sessions#create"
   match '/auth/failure', :to => 'sessions#failure'
   match "/signout" => "sessions#destroy", :as => :signout
+  match "/trello" => "sessions#trello"
 
   match "/pomodoris" => "pomodoris#index"
   match "/pomodoris/create" => "pomodoris#create"
@@ -25,5 +26,8 @@ Bolognesa::Application.routes.draw do
   match "/repeat_tags" => "pomodoris#repeat_tags"
   match "/delete_tag" => "pomodoris#delete_tag"
   match "/stats" => "users#stats"
+
+  match "/get_trello_cards" => "pomodoris#get_trello_cards"
+  match "/trello_settings" => "users#trello_settings"
 
 end

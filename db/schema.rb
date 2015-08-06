@@ -11,44 +11,49 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140411145013) do
+ActiveRecord::Schema.define(:version => 20140707015359) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "user_id"
   end
 
   create_table "pomodori_tags", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "pomodori_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "pomodoris", :force => true do |t|
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.datetime "finished_at"
+    t.string   "card_name"
   end
 
   create_table "tags", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "image"
-    t.string   "time_zone",  :default => "UTC"
+    t.string   "time_zone",     :default => "UTC"
     t.text     "auth_hash"
+    t.string   "trello_token"
+    t.text     "boards"
+    t.string   "current_board"
+    t.text     "cards"
   end
 
 end
