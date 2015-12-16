@@ -1,7 +1,7 @@
 Bolognesa, by Ombu Labs
 =========
 
-Available at [http://bolognesa.ombushop.com](http://bolognesa.ombushop.com)
+Available at [http://bolognesa.ombulabs.com](http://bolognesa.ombulabs.com)
 
 Bolognesa is a [Pomodoro technique](http://www.pomodorotechnique.com)<sup>®</sup> online time tracker.
 
@@ -18,7 +18,7 @@ To install Bolognesa in a development environment, you can follow the next steps
 
 Clone the repo
 
-    git clone git@github.com:ombushop/bolognesa.git
+    git clone git@github.com:ombulabs/bolognesa.git
 
 Go to the project path
 
@@ -45,4 +45,4 @@ Start
 Copyright
 ---------
 
-Copyright (c) 2014 [Ombu Labs](http://ombulabs.com)
+Copyright (c) 2015 [Ombu Labs](http://ombulabs.com)
