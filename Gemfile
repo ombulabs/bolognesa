@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.3.1'
 
+gem 'json', '>= 1.8.3'
 gem 'rails', '3.2.18'
 
 group :production do
