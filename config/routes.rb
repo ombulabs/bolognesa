@@ -10,24 +10,24 @@ Bolognesa::Application.routes.draw do
     collection { post :import }
   end
 
-  match "/auth/:provider/callback" => "sessions#create"
-  match '/auth/failure', :to => 'sessions#failure'
-  match "/signout" => "sessions#destroy", :as => :signout
-  match "/trello" => "sessions#trello"
+  get "/auth/:provider/callback" => "sessions#create"
+  get '/auth/failure', :to => 'sessions#failure'
+  get "/signout" => "sessions#destroy", :as => :signout
+  get "/trello" => "sessions#trello"
 
-  match "/pomodoris" => "pomodoris#index"
-  match "/pomodoris/create" => "pomodoris#create"
-  match "/pomodoris/set_finished" => "pomodoris#set_finished"
-  match "/pomodoris/set_tags" => "pomodoris#set_tags"
-  match "/today" => "pomodoris#today"
-  match "/yesterday" => "pomodoris#yesterday"
+  get "/pomodoris" => "pomodoris#index"
+  get "/pomodoris/create" => "pomodoris#create"
+  get "/pomodoris/set_finished" => "pomodoris#set_finished"
+  get "/pomodoris/set_tags" => "pomodoris#set_tags"
+  get "/today" => "pomodoris#today"
+  get "/yesterday" => "pomodoris#yesterday"
 
-  match "/settings" => "users#edit"
-  match "/repeat_tags" => "pomodoris#repeat_tags"
-  match "/delete_tag" => "pomodoris#delete_tag"
-  match "/stats" => "users#stats"
+  get "/settings" => "users#edit"
+  get "/repeat_tags" => "pomodoris#repeat_tags"
+  get "/delete_tag" => "pomodoris#delete_tag"
+  get "/stats" => "users#stats"
 
-  match "/get_trello_cards" => "pomodoris#get_trello_cards"
-  match "/trello_settings" => "users#trello_settings"
+  get "/get_trello_cards" => "pomodoris#get_trello_cards"
+  get "/trello_settings" => "users#trello_settings"
 
 end

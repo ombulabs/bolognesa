@@ -30,4 +30,5 @@ Bolognesa::Application.configure do
 
   config.assets.enabled = true
 
+  config.eager_load = false
 end
