@@ -9,46 +9,49 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140707015359) do
+ActiveRecord::Schema.define(version: 20140707015359) do
 
-  create_table "authorizations", :force => true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "user_id"
   end
 
-  create_table "pomodori_tags", :force => true do |t|
+  create_table "pomodori_tags", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "pomodori_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table "pomodoris", :force => true do |t|
+  create_table "pomodoris", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.datetime "finished_at"
     t.string   "card_name"
   end
 
-  create_table "tags", :force => true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "users", :force => true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "image"
-    t.string   "time_zone",     :default => "UTC"
+    t.string   "time_zone",     default: "UTC"
     t.text     "auth_hash"
     t.string   "trello_token"
     t.text     "boards"
