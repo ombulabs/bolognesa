@@ -200,7 +200,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
-    sprockets (2.11.0)
+    sprockets (2.12.5)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -245,6 +245,7 @@ DEPENDENCIES
   ruby-trello (~> 2.0)
   sass-rails (= 4.0.5)
   selenium-webdriver (~> 2.39.0)
+  sprockets (= 2.12.5)
   sqlite3
   turn (~> 0.8.3)
   uglifier

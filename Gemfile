@@ -14,7 +14,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem "sass-rails", '4.0.5'
+  gem 'sass-rails', '4.0.5'
+  gem 'sprockets', '2.12.5'
   gem 'coffee-rails', '4.0'
   gem 'compass-rails'
   gem 'compass'
